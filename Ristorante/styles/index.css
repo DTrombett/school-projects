@@ -1,0 +1,129 @@
+* {
+	margin: 0;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+	color: #333;
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #777;
+}
+
+.container {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+header {
+	height: 100vh;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%),
+		url(https://picsum.photos/1920/1080);
+	background-position: center;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	padding: 15px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+nav .logo a {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #fff;
+}
+
+nav ul {
+	display: flex;
+	align-items: center;
+}
+
+nav ul li {
+	margin: 0 10px;
+	list-style: none;
+}
+
+nav ul li a {
+	font-size: 1rem;
+	color: #fff;
+}
+
+nav ul li a:hover {
+	color: #f8b500;
+}
+
+section {
+	margin-bottom: 50px;
+}
+
+section p {
+	margin-bottom: 20px;
+}
+
+section h2 {
+	margin-bottom: 10px;
+}
+
+section ul {
+	margin-bottom: 20px;
+}
+
+section li {
+	margin-bottom: 10px;
+}
+
+section.about h2:first-child {
+	padding-top: 50px;
+}
+
+.hero {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.hero-content {
+	text-align: center;
+}
+
+.hero-content h1 {
+	font-size: 4rem;
+	font-weight: bold;
+	color: #fff;
+	margin-bottom: 1rem;
+}
+
+.hero-content p {
+	font-size: 1.5rem;
+	color: #fff;
+	margin-bottom: 2rem;
+}
+
+.btn {
+	padding: 10px 20px;
+	border-radius: 25px;
+	background-color: #f8b500;
+	color: #fff;
+	font-size: 1rem;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.btn:hover {
+	background-color: #fff;
+	color: #f8b500;
+}

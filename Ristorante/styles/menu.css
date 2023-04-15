@@ -1,0 +1,26 @@
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 21px;
+}
+
+h2 {
+	text-align: center;
+}
+
+.menu-item {
+	margin-bottom: 21px;
+}
+
+.menu-item h3 {
+	font-size: 21px;
+}
+
+.menu-item p {
+	margin-bottom: 10px;
+}
+
+.menu-item span {
+	font-size: 18px;
+	font-weight: bold;
+}
