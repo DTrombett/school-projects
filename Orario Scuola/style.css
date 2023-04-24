@@ -1,0 +1,79 @@
+body {
+	--background-color: #313338;
+	--text-color: #dbdee1;
+	--border-radius: 5px;
+	margin: 0;
+	font-family: sans-serif;
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+header {
+	background-color: #0052a3;
+	padding: 1rem 13% 0 13%;
+	border-radius: 0 0 1rem 1rem;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	font-size: 2rem;
+}
+.logo {
+	height: 5rem;
+	margin-right: 2rem;
+}
+.pages {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	padding-left: 0;
+	justify-content: space-evenly;
+}
+.pages > li {
+	text-align: center;
+	padding: 15px 25px;
+	border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+.pages > li:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+.active {
+	border-bottom: solid rgba(0, 0, 0, 0.5);
+}
+.pages ul {
+	display: none;
+	position: absolute;
+	background-color: #2b2d31;
+	margin-top: 18px;
+	list-style: none;
+	text-align: left;
+	padding-left: 0;
+	margin-left: -1rem;
+	padding-top: 1rem;
+	border-radius: var(--border-radius);
+}
+.pages ul > li {
+	padding: 1rem;
+}
+.pages ul::before {
+	content: "";
+	position: absolute;
+	top: -6px;
+	left: 1rem;
+	width: 1rem;
+	height: 1rem;
+	border-radius: 4px;
+	background-color: #2b2d31;
+	transform: rotate(45deg);
+}
+.pages ul > li:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+li:hover > ul {
+	display: block;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
