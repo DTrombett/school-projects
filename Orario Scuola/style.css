@@ -1,6 +1,8 @@
+/* General style */
 body {
-	--background-color: #313338;
-	--text-color: #dbdee1;
+	--background-color: #202020;
+	--embed-color: #272727;
+	--text-color: #ffffff;
 	--border-radius: 5px;
 	margin: 0;
 	font-family: sans-serif;
@@ -12,7 +14,15 @@ header {
 	padding: 1rem 13% 0 13%;
 	border-radius: 0 0 1rem 1rem;
 }
+a {
+	text-decoration: none;
+	color: inherit;
+}
+h2 {
+	letter-spacing: 1px;
+}
 
+/* Header style */
 .header {
 	display: flex;
 	align-items: center;
@@ -28,12 +38,18 @@ header {
 	flex-direction: row;
 	width: 100%;
 	padding-left: 0;
-	justify-content: space-evenly;
+	justify-content: space-around;
 }
 .pages > li {
 	text-align: center;
-	padding: 15px 25px;
 	border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+.pages > li > span,
+.pages > li > a,
+.hiddenList > li > span,
+.hiddenList > li > a {
+	padding: 15px 25px;
+	display: flex;
 }
 .pages > li:hover {
 	background-color: rgba(0, 0, 0, 0.1);
@@ -41,22 +57,18 @@ header {
 .active {
 	border-bottom: solid rgba(0, 0, 0, 0.5);
 }
-.pages ul {
+.pages .hiddenList {
 	display: none;
 	position: absolute;
-	background-color: #2b2d31;
-	margin-top: 18px;
+	background-color: var(--embed-color);
+	margin-top: 3px;
 	list-style: none;
 	text-align: left;
 	padding-left: 0;
-	margin-left: -1rem;
-	padding-top: 1rem;
+	padding-top: 12px;
 	border-radius: var(--border-radius);
 }
-.pages ul > li {
-	padding: 1rem;
-}
-.pages ul::before {
+.pages .hiddenList::before {
 	content: "";
 	position: absolute;
 	top: -6px;
@@ -64,16 +76,37 @@ header {
 	width: 1rem;
 	height: 1rem;
 	border-radius: 4px;
-	background-color: #2b2d31;
+	background-color: var(--embed-color);
 	transform: rotate(45deg);
 }
-.pages ul > li:hover {
+.pages .hiddenList > li:hover {
 	background-color: rgba(0, 0, 0, 0.1);
 }
-li:hover > ul {
+li:hover > .hiddenList {
 	display: block;
 }
-a {
-	text-decoration: none;
-	color: inherit;
+
+/* Orario classi */
+.classHeader {
+	margin-bottom: 2rem;
+}
+.chooseClass {
+	margin: 0 10%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.classes {
+	padding-left: 1rem;
+}
+.classes > li {
+	padding: 5px 0 15px 0;
+	cursor: pointer;
+	width: fit-content;
+}
+.classes > li:hover {
+	text-decoration: underline;
+}
+.chooseClass h3 {
+	margin-left: 18px;
 }
