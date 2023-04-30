@@ -1,3 +1,3 @@
 # Progetti scolastici
 
-Semplicemente una repository con tutti i progetti scolastici
+Semplicemente una repository per i progetti scolastici

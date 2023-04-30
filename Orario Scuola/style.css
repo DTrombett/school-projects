@@ -46,8 +46,7 @@ h2 {
 }
 .pages > li > span,
 .pages > li > a,
-.hiddenList > li > span,
-.hiddenList > li > a {
+.hiddenList > li > * {
 	padding: 15px 25px;
 	display: flex;
 }
@@ -109,4 +108,12 @@ li:hover > .hiddenList {
 }
 .chooseClass h3 {
 	margin-left: 18px;
+}
+#table {
+	height: fit-content;
+	margin-top: 1rem;
+	min-width: 75%;
+}
+#table * {
+	padding: 1rem;
 }
