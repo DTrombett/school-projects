@@ -9,28 +9,35 @@
 	<body>
 		<div class="header"><img src="logo.png" class="logo" />Liceo Scientifico "Andrea Bafile"</div>
 		<ul class="pages">
-			<li class="active"><span>Home</span></li>
-			<li>
+			<li><a href="index.html">Home</a></li>
+			<li class="active">
 				<span>Orario Classi</span>
 				<ul class="hiddenList">
 					<li><a href="orarioScienzeApplicate.html">Scienze Applicate</a></li>
 					<li><a href="orarioNuovoOrdinamento.html">Nuovo Ordinamento</a></li>
-					<li><a href="orarioInternazionale.html">Internazionale</a></li>
+					<li><span>Internazionale</span></li>
 				</ul>
 			</li>
 			<li><a href="orarioProfessori.html">Orario Professori</a></li>
 			<li><a href="ricevimenti.html">Ricevimenti</a></li>
 		</ul>
-		<main class="container">
-			<div class="gridItem item-1">1</div>
-			<div class="gridItem item-2">2</div>
-			<div class="gridItem item-3">3</div>
-			<div class="gridItem item-4">4</div>
-			<div class="gridItem item-5">5</div>
-			<div class="gridItem item-6">6</div>
+		<h2 class="classHeader">Scegli la tua classe</h2>
+		<main class="chooseClass">
+			<div id="classList">
+				<h3 id="i">I</h3>
+				<ul class="classes">
+					<li>1 I</li>
+					<li>2 I</li>
+					<li>3 I</li>
+					<li>4 I</li>
+					<li>5 I</li>
+				</ul>
+			</div>
+			<table id="table"></table>
 		</main>
 		<footer>
-			<span class="credits">Pagina realizzata dalla classe 4B S.A. 2022/2023</span>
+			<div class="credits">Pagina realizzata dalla classe 4B S.A. 2022/2023</div>
 		</footer>
+		<script src="script.js" type="module"></script>
 	</body>
 </html>
