@@ -1,9 +1,25 @@
+/* Scrollbar style */
+::-webkit-scrollbar {
+	width: 15px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #9f9f9f;
+	border-radius: 8px;
+	border: 4px solid transparent;
+	background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: #afafaf;
+}
+::-webkit-scrollbar-thumb:active {
+	background-color: #bfbfbf;
+}
+
 /* General style */
 body {
 	--background-color: #202020;
 	--embed-color: #272727;
 	--text-color: #ffffff;
-	--border-radius: 5px;
 	--brand-color: #0052a3;
 	margin: 0;
 	font-family: sans-serif;
@@ -60,7 +76,7 @@ footer {
 }
 .pages > li {
 	text-align: center;
-	border-radius: var(--border-radius) var(--border-radius) 0 0;
+	border-radius: 5px 5px 0 0;
 }
 .pages > li > span,
 .pages > li > a,
@@ -82,8 +98,8 @@ footer {
 	list-style: none;
 	text-align: left;
 	padding-left: 0;
-	padding-top: 12px;
-	border-radius: var(--border-radius);
+	padding-top: 1rem;
+	border-radius: 5px;
 }
 .pages .hiddenList::before {
 	content: "";
@@ -152,7 +168,8 @@ li:hover > .hiddenList {
 #classList {
 	padding-right: 150px;
 }
-/* TODO: sistemare sta roba per colpa di una persona molto simpatica  */
+
+/* Home page */
 .container {
 	display: grid;
 	margin-top: 60px;
