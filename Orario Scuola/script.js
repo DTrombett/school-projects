@@ -1,18 +1,19 @@
-import orarioClassi from "./orario.json" assert { type: "json" };
+// import orarioClassi from "./orario.json" assert { type: "json" };
 
 const table = document.getElementById("table");
 const colors = {
-	// "Arte": [128, 0, 128],
-	// "Educazione Fisica": [128, 128, 128],
-	// "Filosofia": [0, 255, 0],
-	// "Fisica": [0, 255, 255],
-	// "Informatica": [0, 128, 0],
-	// "Inglese": [255, 0, 255],
-	// "Italiano": [128, 0, 0],
-	// "Matematica": [128, 128, 0],
-	// "Religione": [0, 0, 255],
-	// "Scienze": [255, 0, 0],
-	// "Storia": [255, 255, 0],
+	"Arte": [244, 107, 24],
+	"Educazione Fisica": [165, 136, 71],
+	"Filosofia": [130, 218, 242],
+	"Fisica": [252, 173, 190],
+	"Informatica": [205, 185, 250],
+	"Inglese": [70, 79, 245],
+	"Italiano": [37, 216, 180],
+	"Latino": [244, 0, 161],
+	"Matematica": [210, 54, 57],
+	"Religione": [104, 29, 97],
+	"Scienze": [124, 240, 86],
+	"Storia": [241, 232, 126],
 };
 
 if (table instanceof HTMLTableElement)
@@ -21,15 +22,15 @@ if (table instanceof HTMLTableElement)
 		const { textContent } = event.target;
 
 		if (!textContent) return;
-		/** @type {string[][] | undefined} */
-		const array = orarioClassi[textContent];
-
-		if (!array) return;
+		// 		/** @type {string[][] | undefined} */
+		// 		const array = orarioClassi[textContent];
+		//
+		// 		if (!array) return;
 		if (!table.caption) table.caption = table.createCaption();
 		table.caption.textContent = `Orario ${textContent}`;
 		for (let i = 1; i < table.rows.length; i++)
 			for (let j = 1; j < table.rows[i].cells.length; j++) {
-				const subject = array[i - 1]?.[j - 1];
+				const subject = Object.keys(colors)[Math.floor(Math.random() * 12)];
 
 				table.rows[i].cells[j].textContent = subject;
 				table.rows[i].cells[j].style.backgroundColor =

@@ -16,6 +16,9 @@
 }
 
 /* General style */
+* {
+	box-sizing: border-box;
+}
 body {
 	--background-color: #202020;
 	--embed-color: #272727;
@@ -58,6 +61,22 @@ caption {
 }
 td {
 	width: 1%;
+}
+@media screen and (max-width: 768px) {
+	/* Stile per tablet e desktop */
+	.header {
+		width: 105% !important;
+	}
+	.pages {
+		width: 105%;
+	}
+	.hiddenList {
+		text-align: left;
+	}
+	main {
+		align-items: center;
+		width: 100%;
+	}
 }
 
 /* Header style */
