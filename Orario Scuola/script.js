@@ -2,8 +2,17 @@ import orarioClassi from "./orario.json" assert { type: "json" };
 
 const table = document.getElementById("table");
 const colors = {
-	"Lunedì 8:10": [255, 0, 0],
-	"Martedì 8:10": [0, 0, 255],
+	// "Matematica": [128, 128, 0],
+	// "Scienze": [255, 0, 0],
+	// "Storia": [255, 255, 0],
+	// "Italiano": [128, 0, 0],
+	// "Inglese": [255, 0, 255],
+	// "Filosofia": [0, 255, 0],
+	// "Fisica": [0, 255, 255],
+	// "Religione": [0, 0, 255],
+	// "Educazione Fisica": [128, 128, 128],
+	// "Arte": [128, 0, 128],
+	// "Informatica": [0, 128, 0],
 };
 
 if (table instanceof HTMLTableElement)

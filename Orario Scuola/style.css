@@ -49,13 +49,15 @@ footer span {
 	width: fit-content;
 }
 table {
-	border-collapse: collapse;
 	text-align: center;
 }
 caption {
 	font-size: 1.5rem;
 	font-weight: bold;
 	letter-spacing: 1.5px;
+}
+td {
+	width: 1%;
 }
 
 /* Header style */
