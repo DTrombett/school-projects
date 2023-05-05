@@ -147,8 +147,7 @@ li:hover > .hiddenList {
 	margin-left: 18px;
 }
 #classList {
-	min-width: 10%;
-	padding-right: 150px;
+	min-width: 20%;
 }
 .classes {
 	padding-left: 1rem;
@@ -164,7 +163,7 @@ li:hover > .hiddenList {
 #table {
 	height: fit-content;
 	margin-top: 1rem;
-	max-width: 90%;
+	max-width: 80%;
 	display: none;
 }
 #table * {
