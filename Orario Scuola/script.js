@@ -1,7 +1,7 @@
 import orarioClassi from "./orario.json" assert { type: "json" };
 
 const table = document.getElementById("table");
-const daysOfWeek = new Array(7).fill("").map((_, i) => {
+const daysOfWeek = new Array(6).fill("").map((_, i) => {
 	const day = new Date(Date.UTC(2018, 0, i + 1)).toLocaleDateString(navigator.language, {
 		weekday: "long",
 	});
@@ -23,12 +23,14 @@ if (table instanceof HTMLTableElement)
 		if (!table.caption) table.caption = table.createCaption();
 		table.caption.textContent = `Orario ${textContent}`;
 		if (!table.rows[0]) {
-			table.insertRow();
+			const row = table.insertRow();
+
+			row.insertCell();
 			for (const day of daysOfWeek) {
 				const th = document.createElement("th");
 
 				th.textContent = day;
-				/** @type {HTMLTableRowElement} */ (table.rows[0]).appendChild(th);
+				row.appendChild(th);
 			}
 		}
 		for (let i = 0; i < array.length; i++) {

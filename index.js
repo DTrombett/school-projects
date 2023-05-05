@@ -5,7 +5,7 @@ const app = express();
 const dirs = readdirSync(".", {
 	withFileTypes: true,
 })
-	.filter((e) => e.isDirectory() && !["node_modules", ".git"].includes(e.name))
+	.filter((e) => e.isDirectory() && e.name !== "node_modules" && !e.name.startsWith("."))
 	.map((e) => e.name);
 
 app.get("/", (_req, res) => {
