@@ -1,14 +1,10 @@
 import orarioClassi from "./orario.json" assert { type: "json" };
 
 const table = document.getElementById("table");
-const daysOfWeek = new Array(6).fill("").map((_, i) => {
-	const day = new Date(Date.UTC(2018, 0, i + 1)).toLocaleDateString(navigator.language, {
-		weekday: "long",
-	});
-
-	return day[0].toUpperCase() + day.slice(1);
-});
-const hours = ["8:10", "9:10", "10:10", "11:10", "12:10", "13:10"];
+const colors = {
+	"Lunedì 8:10": [255, 0, 0],
+	"Martedì 8:10": [0, 0, 255],
+};
 
 if (table instanceof HTMLTableElement)
 	document.getElementById("classList")?.addEventListener("click", (event) => {
@@ -22,26 +18,13 @@ if (table instanceof HTMLTableElement)
 		if (!array) return;
 		if (!table.caption) table.caption = table.createCaption();
 		table.caption.textContent = `Orario ${textContent}`;
-		if (!table.rows[0]) {
-			const row = table.insertRow();
+		for (let i = 1; i < table.rows.length; i++)
+			for (let j = 1; j < table.rows[i].cells.length; j++) {
+				const subject = array[i - 1]?.[j - 1];
 
-			row.insertCell();
-			for (const day of daysOfWeek) {
-				const th = document.createElement("th");
-
-				th.textContent = day;
-				row.appendChild(th);
+				table.rows[i].cells[j].textContent = subject;
+				table.rows[i].cells[j].style.backgroundColor =
+					colors[subject] && `rgba(${colors[subject].join(", ")}, 0.5)`;
 			}
-		}
-		for (let i = 0; i < array.length; i++) {
-			const index = i + 1;
-
-			if (!table.rows[index]) table.insertRow();
-			if (!table.rows[index].cells[0]) table.rows[index].insertCell();
-			table.rows[index].cells[0].textContent = hours[i];
-			for (let j = 0; j < array[i].length; j++) {
-				if (!table.rows[index].cells[j + 1]) table.rows[index].insertCell();
-				table.rows[index].cells[j + 1].textContent = array[i][j];
-			}
-		}
+		table.style.display = "table";
 	});

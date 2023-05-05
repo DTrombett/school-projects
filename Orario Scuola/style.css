@@ -45,8 +45,17 @@ footer {
 	align-items: center;
 	justify-content: center;
 }
-.credits {
+footer span {
 	width: fit-content;
+}
+table {
+	border-collapse: collapse;
+	text-align: center;
+}
+caption {
+	font-size: 1.5rem;
+	font-weight: bold;
+	letter-spacing: 1.5px;
 }
 
 /* Header style */
@@ -119,7 +128,7 @@ li:hover > .hiddenList {
 	display: block;
 }
 
-/* Orario classi */
+/* Orario */
 .classHeader {
 	text-align: center;
 	margin: 0 0 0 6rem;
@@ -132,6 +141,13 @@ li:hover > .hiddenList {
 	flex-direction: row;
 	justify-content: space-between;
 }
+.chooseClass h3 {
+	margin-left: 18px;
+}
+#classList {
+	min-width: 10%;
+	padding-right: 150px;
+}
 .classes {
 	padding-left: 1rem;
 }
@@ -143,30 +159,15 @@ li:hover > .hiddenList {
 .classes > li:hover {
 	text-decoration: underline;
 }
-.chooseClass h3 {
-	margin-left: 18px;
-}
 #table {
 	height: fit-content;
 	margin-top: 1rem;
-	min-width: 75%;
+	max-width: 90%;
+	display: none;
 }
 #table * {
 	padding: 1rem;
-}
-.contClassHeader {
-	text-align: center;
-	margin-left: 120px;
-	width: fit-content;
-	padding-top: 20px;
-	padding-right: 16px;
-	padding-bottom: 1px;
-	position: sticky;
-	top: 51px;
-	background-color: var(--background-color);
-}
-#classList {
-	padding-right: 150px;
+	border-radius: 4px;
 }
 
 /* Home page */

@@ -9,7 +9,8 @@
 	"devDependencies": {},
 	"scripts": {
 		"test": "node .",
-		"start": "node ."
+		"start": "node .",
+		"prepare": "npm start"
 	},
 	"repository": {
 		"type": "git",
