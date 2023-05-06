@@ -1,5 +1,4 @@
-// import orarioClassi from "./orario.json" assert { type: "json" };
-
+const orarioClassi = await fetch("./orario.json").then((b) => b.json());
 const table = document.getElementById("table");
 const colors = {
 	"Arte": [244, 107, 24],

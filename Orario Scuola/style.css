@@ -68,7 +68,7 @@ td {
 		width: 105% !important;
 	}
 	.pages {
-		width: 105%;
+		width: 105% !important;
 	}
 	.hiddenList {
 		text-align: left;

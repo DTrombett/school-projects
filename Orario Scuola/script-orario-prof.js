@@ -1,5 +1,4 @@
-import orarioClassi from "./orario-prof.json" assert { type: "json" };
-
+const orarioClassi = await fetch("./orario-prof.json").then((b) => b.json());
 const table = document.getElementById("table");
 const daysOfWeek = new Array(6).fill("").map((_, i) => {
 	const day = new Date(Date.UTC(2018, 0, i + 1)).toLocaleDateString(navigator.language, {
@@ -44,4 +43,5 @@ if (table instanceof HTMLTableElement)
 				table.rows[index].cells[j + 1].textContent = array[i][j];
 			}
 		}
+		table.style.display = "table";
 	});
