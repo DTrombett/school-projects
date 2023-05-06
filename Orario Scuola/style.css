@@ -62,22 +62,6 @@ caption {
 td {
 	width: 1%;
 }
-@media screen and (max-width: 768px) {
-	/* Stile per tablet e desktop */
-	.header {
-		width: 105% !important;
-	}
-	.pages {
-		width: 105% !important;
-	}
-	.hiddenList {
-		text-align: left;
-	}
-	main {
-		align-items: center;
-		width: 100%;
-	}
-}
 
 /* Header style */
 .header {
@@ -107,6 +91,8 @@ td {
 .pages > li {
 	text-align: center;
 	border-radius: 5px 5px 0 0;
+	display: flex;
+	align-items: center;
 }
 .pages > li > span,
 .pages > li > a,
@@ -124,7 +110,7 @@ td {
 	display: none;
 	position: absolute;
 	background-color: var(--embed-color);
-	margin-top: 3px;
+	margin-top: 212px;
 	list-style: none;
 	text-align: left;
 	padding-left: 0;
@@ -227,4 +213,29 @@ li:hover > .hiddenList {
 .item-6 {
 	grid-row: span 1;
 	grid-column: span 2;
+}
+
+@media screen and (max-width: 768px) {
+	/* Stile per tablet e desktop */
+	main {
+		/* align-items: center; */
+		width: 100vw;
+	}
+	.header {
+		width: 105%;
+	}
+	.pages {
+		width: 105%;
+	}
+	.pages .hiddenList {
+		margin-top: 230px;
+	}
+	.classHeader {
+		justify-content: center;
+		width: 100vw;
+		margin: 0;
+	}
+	.chooseClass {
+		flex-direction: column;
+	}
 }
