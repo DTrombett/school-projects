@@ -1,94 +1,94 @@
 {
-	"1A S.A.": [
-		[
-			"Lunedì 8:10",
-			"Martedì 8:10",
-			"Mercoledì 8:10",
-			"Giovedì 8:10",
-			"Venerdì 8:10",
-			"Sabato 8:10"
-		],
-		[
-			"Lunedì 9:10",
-			"Martedì 9:10",
-			"Mercoledì 9:10",
-			"Giovedì 9:10",
-			"Venerdì 9:10",
-			"Sabato 9:10"
-		],
-		[
-			"Lunedì 10:10",
-			"Martedì 10:10",
-			"Mercoledì 10:10",
-			"Giovedì 10:10",
-			"Venerdì 10:10",
-			"Sabato 10:10"
-		],
-		[
-			"Lunedì 11:10",
-			"Martedì 11:10",
-			"Mercoledì 11:10",
-			"Giovedì 11:10",
-			"Venerdì 11:10",
-			"Sabato 11:10"
-		],
-		[
-			"Lunedì 12:10",
-			"Martedì 12:10",
-			"Mercoledì 12:10",
-			"Giovedì 12:10",
-			"Venerdì 12:10",
-			"Sabato 12:10"
-		]
-	],
-	"2A S.A.": [
-		[
-			"Lunedì 8:10",
-			"Martedì 8:10",
-			"Mercoledì 8:10",
-			"Giovedì 8:10",
-			"Venerdì 8:10",
-			"Sabato 8:10"
-		],
-		[
-			"Lunedì 9:10",
-			"Martedì 9:10",
-			"Mercoledì 9:10",
-			"Giovedì 9:10",
-			"Venerdì 9:10",
-			"Sabato 9:10"
-		],
-		[
-			"Lunedì 10:10",
-			"Martedì 10:10",
-			"Mercoledì 10:10",
-			"Giovedì 10:10",
-			"Venerdì 10:10",
-			"Sabato 10:10"
-		],
-		[
-			"Lunedì 11:10",
-			"Martedì 11:10",
-			"Mercoledì 11:10",
-			"Giovedì 11:10",
-			"Venerdì 11:10",
-			"Sabato 11:10"
-		],
-		[
-			"Lunedì 12:10",
-			"Martedì 12:10",
-			"Mercoledì 12:10",
-			"Giovedì 12:10",
-			"Venerdì 12:10",
-			"Sabato 12:10"
-		],
-		[
-			"Lunedì 13:10",
-			"Martedì 13:10",
-			"Mercoledì 13:10",
-			"Giovedì 13:10",
-			"Venerdì 13:10",
-			"Sabato 13:10"
-		]
-	]
+  "1A S.A.": [
+    [
+      "Lunedì 8:10",
+      "Martedì 8:10",
+      "Mercoledì 8:10",
+      "Giovedì 8:10",
+      "Venerdì 8:10",
+      "Sabato 8:10"
+    ],
+    [
+      "Lunedì 9:10",
+      "Martedì 9:10",
+      "Mercoledì 9:10",
+      "Giovedì 9:10",
+      "Venerdì 9:10",
+      "Sabato 9:10"
+    ],
+    [
+      "Lunedì 10:10",
+      "Martedì 10:10",
+      "Mercoledì 10:10",
+      "Giovedì 10:10",
+      "Venerdì 10:10",
+      "Sabato 10:10"
+    ],
+    [
+      "Lunedì 11:10",
+      "Martedì 11:10",
+      "Mercoledì 11:10",
+      "Giovedì 11:10",
+      "Venerdì 11:10",
+      "Sabato 11:10"
+    ],
+    [
+      "Lunedì 12:10",
+      "Martedì 12:10",
+      "Mercoledì 12:10",
+      "Giovedì 12:10",
+      "Venerdì 12:10",
+      "Sabato 12:10"
+    ]
+  ],
+  "2A S.A.": [
+    [
+      "Lunedì 8:10",
+      "Martedì 8:10",
+      "Mercoledì 8:10",
+      "Giovedì 8:10",
+      "Venerdì 8:10",
+      "Sabato 8:10"
+    ],
+    [
+      "Lunedì 9:10",
+      "Martedì 9:10",
+      "Mercoledì 9:10",
+      "Giovedì 9:10",
+      "Venerdì 9:10",
+      "Sabato 9:10"
+    ],
+    [
+      "Lunedì 10:10",
+      "Martedì 10:10",
+      "Mercoledì 10:10",
+      "Giovedì 10:10",
+      "Venerdì 10:10",
+      "Sabato 10:10"
+    ],
+    [
+      "Lunedì 11:10",
+      "Martedì 11:10",
+      "Mercoledì 11:10",
+      "Giovedì 11:10",
+      "Venerdì 11:10",
+      "Sabato 11:10"
+    ],
+    [
+      "Lunedì 12:10",
+      "Martedì 12:10",
+      "Mercoledì 12:10",
+      "Giovedì 12:10",
+      "Venerdì 12:10",
+      "Sabato 12:10"
+    ],
+    [
+      "Lunedì 13:10",
+      "Martedì 13:10",
+      "Mercoledì 13:10",
+      "Giovedì 13:10",
+      "Venerdì 13:10",
+      "Sabato 13:10"
+    ]
+  ]
 }

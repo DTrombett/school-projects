@@ -1,2 +1,5 @@
 node_modules
 .vscode
+handleTextData.js
+test.json
+test.txt

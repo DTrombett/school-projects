@@ -1,25 +1,24 @@
 {
-	"dependencies": {
-		"express": "^4.18.2"
-	},
-	"name": "school-projects",
-	"description": "Semplicemente una repository per i progetti scolastici",
-	"version": "1.0.0",
-	"main": "index.js",
-	"devDependencies": {},
-	"scripts": {
-		"test": "node .",
-		"start": "node .",
-		"prepare": "npm start"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/DTrombett/school-projects.git"
-	},
-	"author": "DTrombett",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/DTrombett/school-projects/issues"
-	},
-	"homepage": "https://github.com/DTrombett/school-projects#readme"
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "name": "school-projects",
+  "description": "Semplicemente una repository per i progetti scolastici",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node .",
+    "start": "node .",
+    "prepare": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DTrombett/school-projects.git"
+  },
+  "author": "DTrombett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DTrombett/school-projects/issues"
+  },
+  "homepage": "https://github.com/DTrombett/school-projects#readme"
 }

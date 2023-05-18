@@ -1,156 +1,159 @@
 <!DOCTYPE html>
 <html lang="it">
-	<head>
-		<title>Orario Scolastico - Liceo Scientifico A. Bafile</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="header">
-			<img src="logo.png" alt="logo" class="logo" />Liceo Scientifico "Andrea Bafile"
-		</div>
-		<ul class="pages">
-			<li><a href="index.html">Home</a></li>
-			<li>
-				<span>Orario Classi</span>
-				<ul class="hiddenList">
-					<li><a href="orarioScienzeApplicate.html">Scienze Applicate</a></li>
-					<li><a href="orarioNuovoOrdinamento.html">Nuovo Ordinamento</a></li>
-					<li><a href="orarioInternazionale.html">Internazionale</a></li>
-				</ul>
-			</li>
-			<li class="active"><span>Orario Professori</span></li>
-			<li><a href="ricevimenti.html">Ricevimenti</a></li>
-		</ul>
-		<main>
-			<h2 class="classHeader">Scegli il professore</h2>
-			<div class="chooseClass">
-				<div id="classList">
-					<h3 id="a">A</h3>
-					<ul class="classes">
-						<li>Alesii G.</li>
-						<li>Antonini C.</li>
-						<li>Ara C.</li>
-					</ul>
-					<h3 id="b">B</h3>
-					<ul class="classes">
-						<li>Barone C.</li>
-						<li>Bazzucchi A.</li>
-						<li>Benedetti E.</li>
-						<li>Benedetti R.</li>
-						<li>Biordi C.</li>
-						<li>Bruno V.</li>
-						<li>Buoncompagno F.</li>
-						<li>Buzzelli C.</li>
-					</ul>
-					<h3 id="c">C</h3>
-					<ul class="classes">
-						<li>Cappelletti A.</li>
-						<li>Capulli M.</li>
-						<li>Carosone R.</li>
-						<li>Castellano</li>
-						<li>Cavalli E.</li>
-						<li>Cellini G.</li>
-						<li>Cinque M.</li>
-						<li>Cordeschi S.</li>
-						<li>Corridore</li>
-						<li>Costantini</li>
-					</ul>
-					<h3 id="g">G</h3>
-					<ul class="classes">
-						<li>Galizia L.</li>
-						<li>Galli L.</li>
-						<li>Gaudieri M.</li>
-						<li>Genova L.</li>
-						<li>Gentile C.</li>
-						<li>Giallonardo A.</li>
-					</ul>
-					<h3 id="l">L</h3>
-					<ul class="classes">
-						<li>Leonardis L.</li>
-						<li>Ludovici R.</li>
-					</ul>
-					<h3 id="m">M</h3>
-					<ul class="classes">
-						<li>Maggi L.</li>
-						<li>Manieri E.</li>
-						<li>Marganella</li>
-						<li>Marronaro M.</li>
-						<li>Martello A.</li>
-						<li>Marzolo V.</li>
-						<li>Matarese A.</li>
-						<li>Migliarini A.</li>
-						<li>Miglietta D.</li>
-						<li>Milani V.</li>
-						<li>Montagnani</li>
-						<li>Moro R.</li>
-						<li>Mucciante A.</li>
-						<li>Musciano C.</li>
-					</ul>
-					<h3 id="n">N</h3>
-					<ul class="classes">
-						<li>N. Marzolo</li>
-						<li>Nardecchia</li>
-						<li>Narducci M.</li>
-					</ul>
-					<h3 id="o">O</h3>
-					<ul class="classes">
-						<li>Onofri A.</li>
-						<li>Ottaviani A.</li>
-					</ul>
-					<h3 id="p">P</h3>
-					<ul class="classes">
-						<li>Pace C.</li>
-						<li>Pacifico G.</li>
-						<li>Pagliaro L.</li>
-						<li>Pallotti S.</li>
-						<li>Pascucci R.</li>
-						<li>Pelini D.</li>
-						<li>Peroni P.</li>
-						<li>Pieri C.</li>
-						<li>Pietrolunghi</li>
-						<li>Placidi M.</li>
-						<li>Profeta P.</li>
-						<li>Pucci V.</li>
-					</ul>
-					<h3 id="r">R</h3>
-					<ul class="classes">
-						<li>Roncari F.</li>
-						<li>Rotellini M.</li>
-						<li>Russo S.</li>
-					</ul>
-					<h3 id="s">S</h3>
-					<ul class="classes">
-						<li>Saltarin E.</li>
-						<li>Salvemme E.</li>
-						<li>Saturno G.</li>
-						<li>Scarsella F.</li>
-						<li>Sciarra M.</li>
-						<li>Semperlotti</li>
-						<li>Stornelli P.</li>
-					</ul>
-					<h3 id="t">T</h3>
-					<ul class="classes">
-						<li>Tontodonati</li>
-					</ul>
-					<h3 id="v">V</h3>
-					<ul class="classes">
-						<li>Valentini G.</li>
-					</ul>
-				</div>
-				<table id="table"></table>
-			</div>
-		</main>
-		<footer>
-			<span class="credits">Pagina realizzata dalla classe 4B S.A. 2022/2023</span>
-		</footer>
-		<script>
-			function toggle(id) {
-				var element = document.getElementById(id);
-				element.classList.toggle("hidden");
-			}
-		</script>
-		<script src="script-orario-prof.js" type="module"></script>
-	</body>
+  <head>
+    <title>Orario Scolastico - Liceo Scientifico A. Bafile</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <img src="logo.png" alt="logo" class="logo" />Liceo Scientifico "Andrea
+      Bafile"
+    </div>
+    <ul class="pages">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <span>Orario Classi</span>
+        <ul class="hiddenList">
+          <li><a href="orarioScienzeApplicate.html">Scienze Applicate</a></li>
+          <li><a href="orarioNuovoOrdinamento.html">Nuovo Ordinamento</a></li>
+          <li><a href="orarioInternazionale.html">Internazionale</a></li>
+        </ul>
+      </li>
+      <li class="active"><span>Orario Professori</span></li>
+      <li><a href="ricevimenti.html">Ricevimenti</a></li>
+    </ul>
+    <main>
+      <h2 class="classHeader">Scegli il professore</h2>
+      <div class="chooseClass">
+        <div id="classList">
+          <h3 id="a">A</h3>
+          <ul class="classes">
+            <li>Alesii G.</li>
+            <li>Antonini C.</li>
+            <li>Ara C.</li>
+          </ul>
+          <h3 id="b">B</h3>
+          <ul class="classes">
+            <li>Barone C.</li>
+            <li>Bazzucchi A.</li>
+            <li>Benedetti E.</li>
+            <li>Benedetti R.</li>
+            <li>Biordi C.</li>
+            <li>Bruno V.</li>
+            <li>Buoncompagno F.</li>
+            <li>Buzzelli C.</li>
+          </ul>
+          <h3 id="c">C</h3>
+          <ul class="classes">
+            <li>Cappelletti A.</li>
+            <li>Capulli M.</li>
+            <li>Carosone R.</li>
+            <li>Castellano</li>
+            <li>Cavalli E.</li>
+            <li>Cellini G.</li>
+            <li>Cinque M.</li>
+            <li>Cordeschi S.</li>
+            <li>Corridore</li>
+            <li>Costantini</li>
+          </ul>
+          <h3 id="g">G</h3>
+          <ul class="classes">
+            <li>Galizia L.</li>
+            <li>Galli L.</li>
+            <li>Gaudieri M.</li>
+            <li>Genova L.</li>
+            <li>Gentile C.</li>
+            <li>Giallonardo A.</li>
+          </ul>
+          <h3 id="l">L</h3>
+          <ul class="classes">
+            <li>Leonardis L.</li>
+            <li>Ludovici R.</li>
+          </ul>
+          <h3 id="m">M</h3>
+          <ul class="classes">
+            <li>Maggi L.</li>
+            <li>Manieri E.</li>
+            <li>Marganella</li>
+            <li>Marronaro M.</li>
+            <li>Martello A.</li>
+            <li>Marzolo V.</li>
+            <li>Matarese A.</li>
+            <li>Migliarini A.</li>
+            <li>Miglietta D.</li>
+            <li>Milani V.</li>
+            <li>Montagnani</li>
+            <li>Moro R.</li>
+            <li>Mucciante A.</li>
+            <li>Musciano C.</li>
+          </ul>
+          <h3 id="n">N</h3>
+          <ul class="classes">
+            <li>N. Marzolo</li>
+            <li>Nardecchia</li>
+            <li>Narducci M.</li>
+          </ul>
+          <h3 id="o">O</h3>
+          <ul class="classes">
+            <li>Onofri A.</li>
+            <li>Ottaviani A.</li>
+          </ul>
+          <h3 id="p">P</h3>
+          <ul class="classes">
+            <li>Pace C.</li>
+            <li>Pacifico G.</li>
+            <li>Pagliaro L.</li>
+            <li>Pallotti S.</li>
+            <li>Pascucci R.</li>
+            <li>Pelini D.</li>
+            <li>Peroni P.</li>
+            <li>Pieri C.</li>
+            <li>Pietrolunghi</li>
+            <li>Placidi M.</li>
+            <li>Profeta P.</li>
+            <li>Pucci V.</li>
+          </ul>
+          <h3 id="r">R</h3>
+          <ul class="classes">
+            <li>Roncari F.</li>
+            <li>Rotellini M.</li>
+            <li>Russo S.</li>
+          </ul>
+          <h3 id="s">S</h3>
+          <ul class="classes">
+            <li>Saltarin E.</li>
+            <li>Salvemme E.</li>
+            <li>Saturno G.</li>
+            <li>Scarsella F.</li>
+            <li>Sciarra M.</li>
+            <li>Semperlotti</li>
+            <li>Stornelli P.</li>
+          </ul>
+          <h3 id="t">T</h3>
+          <ul class="classes">
+            <li>Tontodonati</li>
+          </ul>
+          <h3 id="v">V</h3>
+          <ul class="classes">
+            <li>Valentini G.</li>
+          </ul>
+        </div>
+        <table id="table"></table>
+      </div>
+    </main>
+    <footer>
+      <span class="credits"
+        >Pagina realizzata dalla classe 4B S.A. 2022/2023</span
+      >
+    </footer>
+    <script>
+      function toggle(id) {
+        var element = document.getElementById(id);
+        element.classList.toggle("hidden");
+      }
+    </script>
+    <script src="script-orario-prof.js" type="module"></script>
+  </body>
 </html>
