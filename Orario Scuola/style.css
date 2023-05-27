@@ -146,7 +146,7 @@ li:hover > .hiddenList {
 .chooser {
 	display: flex;
 	flex-direction: column;
-	margin: 0 10%;
+	margin-left: 10%;
 }
 .classHeader {
 	margin-top: 0;
@@ -156,28 +156,35 @@ li:hover > .hiddenList {
 	width: fit-content;
 }
 #classList h3 {
-	margin-left: 18px;
+	background-color: var(--background-color);
+	margin-block-end: 0;
+	margin-block-start: 0;
+	padding-bottom: 1rem;
+	padding-left: 18px;
+	position: sticky;
+	top: -1px;
 }
 #classList {
-	height: 55vh;
+	height: 50vh;
 	min-width: 20%;
 	overflow: auto;
 }
-.classes {
+#classList > ul {
 	padding-left: 1rem;
 }
-.classes > li {
+#classList > ul > li {
 	cursor: pointer;
 	padding: 5px 0 15px 0;
 	width: fit-content;
 }
-.classes > li:hover {
+#classList > ul > li:hover {
 	text-decoration: underline;
 }
 #table {
 	display: none;
 	height: fit-content;
 	max-width: 80%;
+	margin: auto;
 }
 #table *:not(caption) {
 	border-radius: 4px;
