@@ -52,16 +52,25 @@ footer span {
 	width: fit-content;
 }
 table {
+	table-layout: fixed;
 	text-align: center;
+}
+table tr:first-child > th {
+	vertical-align: bottom;
+}
+table tr th:first-child {
+	text-align: right;
+}
+table td,
+table th {
+	border-radius: 4px;
+	height: 4rem;
+	padding: 1rem;
 }
 caption {
 	font-size: 1.5rem;
 	font-weight: bold;
 	letter-spacing: 1.5px;
-	padding-bottom: 1rem;
-}
-td {
-	width: 1%;
 }
 
 /* Header style */
@@ -113,9 +122,9 @@ td {
 	border-radius: 5px;
 	display: none;
 	list-style: none;
-	margin-top: 210px;
+	margin-top: 206px;
 	padding-left: 0;
-	padding-top: 1rem;
+	padding-top: 12px;
 	position: absolute;
 	text-align: left;
 }
@@ -141,54 +150,59 @@ li:hover > .hiddenList {
 .display {
 	display: flex;
 	flex-direction: row;
-	padding-top: 2rem;
+	margin: 3rem 0;
 }
 .chooser {
 	display: flex;
 	flex-direction: column;
-	margin-left: 10%;
+	margin-left: 6%;
+	min-width: fit-content;
 }
 .classHeader {
-	margin-top: 0;
-	padding-bottom: 1rem;
-	padding-right: 1rem;
+	margin: 0 1rem 0 0;
 	text-align: center;
 	width: fit-content;
+}
+#classList {
+	height: 50vh;
+	margin-top: 3rem;
+	overflow: auto;
 }
 #classList h3 {
 	background-color: var(--background-color);
 	margin-block-end: 0;
 	margin-block-start: 0;
-	padding-bottom: 1rem;
-	padding-left: 18px;
+	padding: 1rem 18px;
 	position: sticky;
-	top: -1px;
+	top: -1rem;
 }
-#classList {
-	height: 50vh;
-	min-width: 20%;
-	overflow: auto;
+#classList h3:first-child {
+	padding-top: 0;
+	top: 0;
 }
 #classList > ul {
+	margin-block-end: 1rem;
 	padding-left: 1rem;
+}
+#classList > ul:last-child {
+	margin-block-end: 0;
 }
 #classList > ul > li {
 	cursor: pointer;
-	padding: 5px 0 15px 0;
 	width: fit-content;
+}
+#classList > ul > li:not(:first-child) {
+	margin-top: 20px;
 }
 #classList > ul > li:hover {
 	text-decoration: underline;
 }
 #table {
+	border-spacing: 3px;
 	display: none;
-	height: fit-content;
-	max-width: 80%;
-	margin: auto;
-}
-#table *:not(caption) {
-	border-radius: 4px;
-	padding: 1rem;
+	margin: 0 auto auto auto;
+	width: 75%;
+	padding-right: 6%;
 }
 
 /* Home page */
@@ -202,7 +216,7 @@ li:hover > .hiddenList {
 	animation-iteration-count: infinite;
 	animation-name: moveBackground;
 	animation-timing-function: linear;
-	background: linear-gradient(to right, #0052a3, #7cbc06, #0052a3);
+	background: linear-gradient(to right, #154586, #bec519, #154586);
 	background-clip: text;
 	-moz-background-clip: text;
 	-webkit-background-clip: text;
@@ -211,7 +225,7 @@ li:hover > .hiddenList {
 	font-family: "Crete Round";
 	font-size: 3rem;
 	font-weight: normal;
-	padding-bottom: 2rem;
+	margin-bottom: 4rem;
 	text-align: center;
 }
 .container > div {
@@ -230,7 +244,9 @@ li:hover > .hiddenList {
 }
 .container img {
 	--image-size: 250px;
-	border-radius: 50%;
+	animation-duration: 3s;
+	animation-fill-mode: forwards;
+	animation-name: borderFade;
 	max-height: var(--image-size);
 	max-width: var(--image-size);
 	min-height: var(--image-size);
@@ -247,6 +263,14 @@ li:hover > .hiddenList {
 	margin: auto 2rem;
 }
 
+@keyframes borderFade {
+	from {
+		border-radius: 0;
+	}
+	to {
+		border-radius: 50%;
+	}
+}
 @keyframes fadeIn {
 	from {
 		opacity: 0;
