@@ -174,11 +174,11 @@ li:hover > .hiddenList {
 	margin-block-start: 0;
 	padding: 1rem 18px;
 	position: sticky;
-	top: -1rem;
+	top: calc(-1rem - 1px);
 }
 #classList h3:first-child {
 	padding-top: 0;
-	top: 0;
+	top: -1px;
 }
 #classList > ul {
 	margin-block-end: 1rem;
