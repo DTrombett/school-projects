@@ -41,15 +41,15 @@ h2 {
 footer {
 	align-items: center;
 	background-color: var(--brand-color);
-	bottom: 0;
+	bottom: -1px;
 	display: flex;
 	height: 3rem;
 	justify-content: center;
+	padding: 1rem;
 	position: fixed;
+	text-align: center;
+	text-wrap: balance;
 	width: 100%;
-}
-footer span {
-	width: fit-content;
 }
 table {
 	table-layout: fixed;
@@ -66,6 +66,7 @@ table th {
 	border-radius: 4px;
 	height: 4rem;
 	padding: 1rem;
+	white-space: pre-line;
 }
 caption {
 	font-size: 1.5rem;
@@ -95,7 +96,7 @@ caption {
 	margin-top: auto;
 	padding-left: 0;
 	position: sticky;
-	top: 0;
+	top: -1px;
 	width: 100%;
 	z-index: 1;
 }
@@ -144,6 +145,64 @@ caption {
 }
 li:hover > .hiddenList {
 	display: block;
+}
+
+/* Home page */
+.container {
+	margin: 50px;
+	margin-top: 20px;
+}
+.title {
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-name: moveBackground;
+	animation-timing-function: linear;
+	background: linear-gradient(to right, #154586, #bec519, #154586);
+	background-clip: text;
+	-moz-background-clip: text;
+	-webkit-background-clip: text;
+	background-size: 200%;
+	color: transparent;
+	font-family: "Crete Round";
+	font-size: 3rem;
+	font-weight: normal;
+	margin-bottom: 4rem;
+	text-align: center;
+	text-wrap: balance;
+}
+.container > div {
+	animation-duration: 3s;
+	animation-fill-mode: forwards;
+	animation-name: fadeIn;
+	display: flex;
+	margin: 2rem 0;
+	opacity: 0;
+}
+.container > div:nth-child(even) {
+	flex-direction: row;
+}
+.container > div:nth-child(odd) {
+	flex-direction: row-reverse;
+}
+.container img {
+	--image-size: 250px;
+	animation-duration: 3s;
+	animation-fill-mode: forwards;
+	animation-name: borderFade;
+	max-height: var(--image-size);
+	max-width: var(--image-size);
+	min-height: var(--image-size);
+	min-width: var(--image-size);
+	text-align: center;
+	transition: ease-out 1s;
+}
+.container img:hover {
+	transform: scale(1.2);
+}
+.container span {
+	font-size: 2rem;
+	line-height: 44px;
+	margin: auto 2rem;
 }
 
 /* Orario */
@@ -205,65 +264,6 @@ li:hover > .hiddenList {
 	padding-right: 6%;
 }
 
-/* Home page */
-.container {
-	justify-items: center;
-	margin: 50px;
-	margin-top: 20px;
-}
-.title {
-	animation-duration: 10s;
-	animation-iteration-count: infinite;
-	animation-name: moveBackground;
-	animation-timing-function: linear;
-	background: linear-gradient(to right, #154586, #bec519, #154586);
-	background-clip: text;
-	-moz-background-clip: text;
-	-webkit-background-clip: text;
-	background-size: 200%;
-	color: transparent;
-	font-family: "Crete Round";
-	font-size: 3rem;
-	font-weight: normal;
-	margin-bottom: 4rem;
-	text-align: center;
-	text-wrap: balance;
-}
-.container > div {
-	animation-duration: 3s;
-	animation-fill-mode: forwards;
-	animation-name: fadeIn;
-	display: flex;
-	margin: 2rem 0;
-	opacity: 0;
-}
-.container > div:nth-child(even) {
-	flex-direction: row;
-}
-.container > div:nth-child(odd) {
-	flex-direction: row-reverse;
-}
-.container img {
-	--image-size: 250px;
-	animation-duration: 3s;
-	animation-fill-mode: forwards;
-	animation-name: borderFade;
-	max-height: var(--image-size);
-	max-width: var(--image-size);
-	min-height: var(--image-size);
-	min-width: var(--image-size);
-	text-align: center;
-	transition: ease-out 1s;
-}
-.container img:hover {
-	transform: scale(1.2);
-}
-.container span {
-	font-size: 2rem;
-	line-height: 44px;
-	margin: auto 2rem;
-}
-
 @keyframes borderFade {
 	from {
 		border-radius: 0;
@@ -292,25 +292,46 @@ li:hover > .hiddenList {
 
 @media screen and (max-width: 768px) {
 	/* Stile per tablet e desktop */
-	main {
-		align-items: center;
-		width: 100vw;
-	}
 	.header {
-		width: 105%;
+		font-size: 1.5rem;
 	}
-	.pages {
-		width: 105%;
+	.logo {
+		height: 12vw;
 	}
-	.pages .hiddenList {
-		margin-top: 230px;
+	.container {
+		margin: 1rem;
 	}
-	.classHeader {
-		justify-content: center;
-		width: 100vw;
-		margin: 0;
+	.title {
+		font-size: 1.75rem;
+		margin-bottom: 0;
 	}
-	.chooseClass {
-		flex-direction: column;
+	.container > div {
+		flex-direction: column !important;
+	}
+	.container > div > * {
+		margin: 1rem auto;
+	}
+	.container img {
+		--image-size: 50vw;
+	}
+	.container img:hover {
+		transform: none;
+	}
+	.container span {
+		font-size: 1.5rem;
+		line-height: normal;
+		text-align: center;
+		text-wrap: balance;
+	}
+}
+@media screen and (max-width: 320px) {
+	.header {
+		font-size: 1rem;
+	}
+	.title {
+		font-size: 1.5rem;
+	}
+	.container span {
+		font-size: 1.25rem;
 	}
 }
