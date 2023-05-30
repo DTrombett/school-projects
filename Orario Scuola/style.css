@@ -227,6 +227,7 @@ li:hover > .hiddenList {
 	font-weight: normal;
 	margin-bottom: 4rem;
 	text-align: center;
+	text-wrap: balance;
 }
 .container > div {
 	animation-duration: 3s;
@@ -274,6 +275,7 @@ li:hover > .hiddenList {
 @keyframes fadeIn {
 	from {
 		opacity: 0;
+		padding-top: 10rem;
 	}
 	to {
 		opacity: 1;

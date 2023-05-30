@@ -103,5 +103,48 @@
 			"Arte",
 			"Informatica"
 		]
+	],
+	"1I": [
+		[
+			"Geostoria",
+			"Matematica\nFisica",
+			"Scienze",
+			"Inglese",
+			"Geostoria",
+			"Arte"
+		],
+		[
+			"Matematica\nFisica",
+			"Italiano\nLatino",
+			"Italiano\nLatino",
+			"Italiano\nLatino",
+			"Inglese",
+			"Italiano\nLatino"
+		],
+		[
+			"Educazione Fisica",
+			"Informatica",
+			"Arte",
+			"Italiano\nLatino",
+			"Matematica\nFisica",
+			"Italiano\nLatino"
+		],
+		[
+			"Inglese",
+			"Geostoria",
+			"Matematica\nFisica",
+			"Matematica\nFisica",
+			"Matematica\nFisica",
+			"Scienze"
+		],
+		[
+			"Inglese",
+			"Inglese",
+			"Matematica\nFisica",
+			"Informatica",
+			"Italiano\nLatino",
+			"Educazione Fisica"
+		],
+		["", "Religione"]
 	]
 }

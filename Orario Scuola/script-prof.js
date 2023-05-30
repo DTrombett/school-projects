@@ -30,7 +30,7 @@ if (table instanceof HTMLTableElement)
 				return alert(
 					"L'orario per questo professore non è ancora disponibile!"
 				);
-			if (!table.caption) table.caption = table.createCaption();
+			table.caption ??= table.createCaption();
 			table.caption.textContent = `Orario ${textContent}`;
 			for (let i = 1; i < table.rows.length; i++) {
 				const hour = array[i - 1];
@@ -46,7 +46,7 @@ if (table instanceof HTMLTableElement)
 					}
 					table.rows[i].cells[j].style.backgroundColor = `rgba(${
 						className === "Ricevimenti"
-							? "255, 0, 0"
+							? "0, 255, 0"
 							: `${CLASS_NUMBER_STEP * +className[0]}, ${
 									CLASS_NAME_STEP *
 									(className[1].charCodeAt(0) - FIRST_CHAR_CODE + 1)
