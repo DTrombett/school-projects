@@ -5,9 +5,8 @@ const parseData = async () => {
 	const doc = await pdfjs.getDocument(
 		"https://www.iisbafile.edu.it/wp-content/uploads/provvisorio-scientifico-18sett-docenti-1.pdf"
 	).promise;
-	const stream = createWriteStream("file.json", { flags: "a" });
-	const lines = [],
-		teachers = [];
+	const stream = createWriteStream("./Orario Scuola/orario-prof.json");
+	const teachers = [];
 
 	for (let i = 1; i <= doc.numPages; i++) {
 		const page = await doc.getPage(i);
@@ -23,21 +22,34 @@ const parseData = async () => {
 
 		pageLines.splice(0, 14);
 		pageLines.splice(-1, 1);
-		lines.push(...pageLines);
 		teachers.push(
 			...pageLines
 				.filter(l => l[0].transform[5] < 50)
 				.map(t => [
-					t.map(text => text.str).join(""),
-					pageLines.find(
-						l => l[0].transform[4] === t[0].transform[4] && t[0] !== l[0]
-					),
+					t
+						.map(text => text.str)
+						.join("")
+						.split(/\s+|(?<=\.)/g)
+						.map(text => text[0].toUpperCase() + text.slice(1).toLowerCase())
+						.join(" "),
+					pageLines
+						.find(l => l[0].transform[4] === t[0].transform[4] && t[0] !== l[0])
+						?.reduce((result, el) => {
+							const offset = el.transform[5] / 18 - 4,
+								hour = Math.round(offset % 6),
+								day = Math.floor(offset / 6);
+
+							result[hour][day] = el.str;
+							return result;
+						}, /** @type {string[][]} */ (new Array(6).fill(undefined).map(() => new Array(6).fill("")))),
 				])
 		);
 		page.cleanup(true);
 	}
-	console.log(teachers, teachers.length);
-	stream.write(JSON.stringify(Object.fromEntries(teachers)));
+	const result = Object.fromEntries(teachers);
+
+	console.log(result);
+	stream.write(JSON.stringify(result));
 	stream.end().close();
 	doc.cleanup();
 };
