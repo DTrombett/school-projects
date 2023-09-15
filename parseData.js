@@ -1,11 +1,10 @@
 const pdfjs = require("pdfjs-dist");
-const { createWriteStream } = require("node:fs");
+const { writeFile } = require("node:fs/promises");
 
 const parseData = async () => {
 	const doc = await pdfjs.getDocument(
 		"https://www.iisbafile.edu.it/wp-content/uploads/provvisorio-scientifico-18sett-docenti-1.pdf"
 	).promise;
-	const stream = createWriteStream("./Orario Scuola/orario-prof.json");
 	const teachers = [];
 
 	for (let i = 1; i <= doc.numPages; i++) {
@@ -35,19 +34,19 @@ const parseData = async () => {
 					pageLines
 						.find(l => l[0].transform[4] === t[0].transform[4] && t[0] !== l[0])
 						?.reduce((result, el) => {
-							const offset = el.transform[5] / 18 - 4,
-								hour = Math.round(offset % 6),
-								day = Math.floor(offset / 6);
+							const offset = el.transform[5] / 18 - 4;
 
-							result[hour][day] = el.str;
+							result[Math.round(offset % 6)][Math.floor(offset / 6)] = el.str;
 							return result;
 						}, /** @type {string[][]} */ (new Array(6).fill(undefined).map(() => new Array(6).fill("")))),
 				])
 		);
 		page.cleanup(true);
 	}
-	stream.write(JSON.stringify(Object.fromEntries(teachers)));
-	stream.end().close();
+	await writeFile(
+		"./Orario Scuola/orario-prof.json",
+		JSON.stringify(Object.fromEntries(teachers))
+	);
 	doc.cleanup();
 };
 
