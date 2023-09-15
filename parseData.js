@@ -46,10 +46,7 @@ const parseData = async () => {
 		);
 		page.cleanup(true);
 	}
-	const result = Object.fromEntries(teachers);
-
-	console.log(result);
-	stream.write(JSON.stringify(result));
+	stream.write(JSON.stringify(Object.fromEntries(teachers)));
 	stream.end().close();
 	doc.cleanup();
 };
