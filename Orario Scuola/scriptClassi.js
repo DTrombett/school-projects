@@ -1,24 +1,24 @@
-const orarioClassi = await fetch("./orarioClassi.json").then(b => b.json());
+const orarioClassi = await fetch("./orarioClassi.json").then((b) => b.json());
 const table = document.getElementById("table");
 /** @type {Record<string, number[] | undefined>} */
 const colors = {
-	"Arte": [244, 107, 24],
+	Arte: [244, 107, 24],
 	"Educazione Fisica": [165, 136, 71],
-	"Filosofia": [130, 218, 242],
-	"Fisica": [252, 173, 190],
-	"Geografia": [120, 116, 63],
-	"Geostoria": [426, 457, 34],
-	"Informatica": [205, 185, 250],
-	"Inglese": [70, 79, 245],
-	"Italiano": [37, 216, 180],
-	"Latino": [244, 0, 161],
-	"Matematica": [210, 54, 57],
-	"Religione": [104, 29, 97],
-	"Scienze": [124, 240, 86],
-	"Storia": [241, 232, 126],
+	Filosofia: [130, 218, 242],
+	Fisica: [252, 173, 190],
+	Geografia: [120, 116, 63],
+	Geostoria: [426, 457, 34],
+	Informatica: [205, 185, 250],
+	Inglese: [70, 79, 245],
+	Italiano: [37, 216, 180],
+	Latino: [244, 0, 161],
+	Matematica: [210, 54, 57],
+	Religione: [104, 29, 97],
+	Scienze: [124, 240, 86],
+	Storia: [241, 232, 126],
 };
 /** @param {string} hash */
-const scrollTo = hash => {
+const scrollTo = (hash) => {
 	document.querySelector(hash)?.scrollIntoView({
 		behavior: "smooth",
 	});
@@ -26,7 +26,7 @@ const scrollTo = hash => {
 };
 
 if (table instanceof HTMLTableElement)
-	document.getElementById("classList")?.addEventListener("click", event => {
+	document.getElementById("classList")?.addEventListener("click", (event) => {
 		if (event.target instanceof HTMLAnchorElement) {
 			scrollTo(/** @type {string} */ (event.target.getAttribute("href")));
 			event.preventDefault();
@@ -67,7 +67,7 @@ if (table instanceof HTMLTableElement)
 							if (!a) return color;
 							return a.map((n, i) => n + color[i]);
 						}, colors[subjects[0]])
-						?.map(n => n / count);
+						?.map((n) => n / count);
 
 					table.rows[i].cells[j].textContent = subject;
 					if (color)
