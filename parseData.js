@@ -25,48 +25,72 @@ const parseTeacherData = async () => {
 		teachers.push(
 			...pageLines
 				.filter((l) => l[0].transform[5] < 50)
-				.map((t) => {
-					const classes = pageLines
-						.find(
-							(l) => l[0].transform[4] === t[0].transform[4] && t[0] !== l[0]
-						)
-						?.reduce((result, el) => {
-							const offset = el.transform[5] / 18 - 4;
-
-							result[Math.round(offset % 6)][Math.floor(offset / 6)] = el.str;
-							return result;
-						}, /** @type {string[][]} */ (new Array(6).fill(undefined).map(() => new Array(6).fill(""))));
-
-					if (classes) {
-						for (let i = classes.length - 1; i >= 0; i--)
-							if (classes[i].every((c) => c === "")) classes.splice(-1);
-							else break;
-						for (const c of classes) {
-							for (let i = c.length - 1; i >= 0; i--)
-								if (c[i] === "") c.splice(-1);
-								else break;
-						}
-					}
-					return [
-						t
-							.map((text) => text.str)
-							.join("")
-							.split(/\s+|(?<=\.)/g)
-							.map(
-								(text) => text[0].toUpperCase() + text.slice(1).toLowerCase()
+				.map(
+					/** @return {[string, string[][] | undefined]} */ (t) => {
+						const classes = pageLines
+							.find(
+								(l) => l[0].transform[4] === t[0].transform[4] && t[0] !== l[0]
 							)
-							.join(" "),
-						classes,
-					];
-				})
+							?.reduce((result, el) => {
+								const offset = el.transform[5] / 18 - 4;
+
+								result[Math.round(offset % 6)][Math.floor(offset / 6)] = el.str;
+								return result;
+							}, /** @type {string[][]} */ (new Array(6).fill(undefined).map(() => new Array(6).fill(""))));
+						let found = false;
+
+						if (classes) {
+							for (let i = classes.length - 1; i >= 0; i--)
+								if (classes[i].every((c) => c === "")) classes.splice(-1);
+								else break;
+							for (const c of classes) {
+								for (let i = c.length - 1; i >= 0; i--)
+									if (c[i] === "") c.splice(-1);
+									else break;
+							}
+						}
+						return [
+							t
+								.map((text) => text.str)
+								.join("")
+								.split(/\s+|(?<=\.)/g)
+								.map(
+									(text) =>
+										text[0].toUpperCase() +
+										text
+											.slice(1)
+											.toLowerCase()
+											.split("")
+											.map((c) => {
+												if (found) c = c.toUpperCase();
+												found = c === "'";
+												return c;
+											})
+											.join("")
+								)
+								.join(" "),
+							classes,
+						];
+					}
+				)
 		);
 		page.cleanup(true);
 	}
 	await writeFile(
 		"./Orario Scuola/orarioProf.json",
-		JSON.stringify(Object.fromEntries(teachers))
+		JSON.stringify(
+			Object.fromEntries(
+				teachers.sort(([name1], [name2]) => name1.localeCompare(name2))
+			)
+		)
 	);
 	doc.cleanup();
 };
 
-Promise.all([parseTeacherData()]);
+const start = performance.now();
+
+Promise.all([parseTeacherData()]).then(() => {
+	console.log(
+		`Data successfully loaded in ${(performance.now() - start).toFixed(3)}ms`
+	);
+});
