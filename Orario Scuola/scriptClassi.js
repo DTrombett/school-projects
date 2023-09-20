@@ -1,4 +1,4 @@
-const orarioClassi = await fetch("./orario.json").then(b => b.json());
+const orarioClassi = await fetch("./orarioClassi.json").then(b => b.json());
 const table = document.getElementById("table");
 /** @type {Record<string, number[] | undefined>} */
 const colors = {

@@ -2,7 +2,7 @@ const CLASS_NUMBER_STEP = 256 / 6;
 const FIRST_CHAR_CODE = "A".charCodeAt(0);
 const CLASS_NAME_STEP = 256 / ("I".charCodeAt(0) - FIRST_CHAR_CODE + 2);
 const CLASS_COURSE_STEP = 256 / 3;
-const orario = await fetch("./orario-prof.json").then(b => b.json());
+const orario = await fetch("./orarioProf.json").then(b => b.json());
 const table = document.getElementById("table");
 /** @param {string} hash */
 const scrollTo = hash => {

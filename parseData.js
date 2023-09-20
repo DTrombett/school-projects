@@ -21,30 +21,45 @@ const parseData = async () => {
 
 		pageLines.splice(0, 14);
 		pageLines.splice(-1, 1);
+
 		teachers.push(
 			...pageLines
 				.filter(l => l[0].transform[5] < 50)
-				.map(t => [
-					t
-						.map(text => text.str)
-						.join("")
-						.split(/\s+|(?<=\.)/g)
-						.map(text => text[0].toUpperCase() + text.slice(1).toLowerCase())
-						.join(" "),
-					pageLines
+				.map(t => {
+					const classes = pageLines
 						.find(l => l[0].transform[4] === t[0].transform[4] && t[0] !== l[0])
 						?.reduce((result, el) => {
 							const offset = el.transform[5] / 18 - 4;
 
 							result[Math.round(offset % 6)][Math.floor(offset / 6)] = el.str;
 							return result;
-						}, /** @type {string[][]} */ (new Array(6).fill(undefined).map(() => new Array(6).fill("")))),
-				])
+						}, /** @type {string[][]} */ (new Array(6).fill(undefined).map(() => new Array(6).fill(""))));
+
+					if (classes) {
+						for (let i = classes.length - 1; i >= 0; i--)
+							if (classes[i].every(c => c === "")) classes.splice(-1);
+							else break;
+						for (const c of classes) {
+							for (let i = c.length - 1; i >= 0; i--)
+								if (c[i] === "") c.splice(-1);
+								else break;
+						}
+					}
+					return [
+						t
+							.map(text => text.str)
+							.join("")
+							.split(/\s+|(?<=\.)/g)
+							.map(text => text[0].toUpperCase() + text.slice(1).toLowerCase())
+							.join(" "),
+						classes,
+					];
+				})
 		);
 		page.cleanup(true);
 	}
 	await writeFile(
-		"./Orario Scuola/orario-prof.json",
+		"./Orario Scuola/orarioProf.json",
 		JSON.stringify(Object.fromEntries(teachers))
 	);
 	doc.cleanup();
