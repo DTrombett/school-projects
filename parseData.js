@@ -1,7 +1,7 @@
 const pdfjs = require("pdfjs-dist");
 const { writeFile } = require("node:fs/promises");
 
-const parseData = async () => {
+const parseTeacherData = async () => {
 	const doc = await pdfjs.getDocument(
 		"https://www.iisbafile.edu.it/wp-content/uploads/provvisorio-scientifico-18sett-docenti-1.pdf"
 	).promise;
@@ -24,10 +24,12 @@ const parseData = async () => {
 
 		teachers.push(
 			...pageLines
-				.filter(l => l[0].transform[5] < 50)
-				.map(t => {
+				.filter((l) => l[0].transform[5] < 50)
+				.map((t) => {
 					const classes = pageLines
-						.find(l => l[0].transform[4] === t[0].transform[4] && t[0] !== l[0])
+						.find(
+							(l) => l[0].transform[4] === t[0].transform[4] && t[0] !== l[0]
+						)
 						?.reduce((result, el) => {
 							const offset = el.transform[5] / 18 - 4;
 
@@ -37,7 +39,7 @@ const parseData = async () => {
 
 					if (classes) {
 						for (let i = classes.length - 1; i >= 0; i--)
-							if (classes[i].every(c => c === "")) classes.splice(-1);
+							if (classes[i].every((c) => c === "")) classes.splice(-1);
 							else break;
 						for (const c of classes) {
 							for (let i = c.length - 1; i >= 0; i--)
@@ -47,10 +49,12 @@ const parseData = async () => {
 					}
 					return [
 						t
-							.map(text => text.str)
+							.map((text) => text.str)
 							.join("")
 							.split(/\s+|(?<=\.)/g)
-							.map(text => text[0].toUpperCase() + text.slice(1).toLowerCase())
+							.map(
+								(text) => text[0].toUpperCase() + text.slice(1).toLowerCase()
+							)
 							.join(" "),
 						classes,
 					];
@@ -65,4 +69,4 @@ const parseData = async () => {
 	doc.cleanup();
 };
 
-parseData();
+Promise.all([parseTeacherData()]);
