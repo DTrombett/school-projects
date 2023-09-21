@@ -68,6 +68,9 @@ table th {
 	padding: 1rem;
 	white-space: pre-line;
 }
+th {
+	user-select: none;
+}
 caption {
 	font-size: 1.5rem;
 	font-weight: bold;
