@@ -1,8 +1,8 @@
-const pdfjs = require("pdfjs-dist");
-const { writeFile } = require("node:fs/promises");
+import { writeFile } from "node:fs/promises";
+import { getDocument } from "pdfjs-dist";
 
 const parseTeacherData = async () => {
-	const doc = await pdfjs.getDocument(
+	const doc = await getDocument(
 		"https://www.iisbafile.edu.it/wp-content/uploads/provvisorio-scientifico-18sett-docenti-1.pdf"
 	).promise;
 	const teachers = [];
@@ -17,7 +17,7 @@ const parseTeacherData = async () => {
 				if (el.hasEOL) array.push([]);
 			}
 			return array;
-		}, /** @type {import("pdfjs-dist/types/src/display/api").TextItem[][]} */ ([[]]));
+		}, /** @type {import("pdfjs-dist/types/src/display/api.js").TextItem[][]} */ ([[]]));
 
 		pageLines.splice(0, 14);
 		pageLines.splice(-1, 1);
@@ -87,7 +87,7 @@ const parseTeacherData = async () => {
 	doc.cleanup();
 };
 const parseClassesData = async () => {
-	const doc = await pdfjs.getDocument(
+	const doc = await getDocument(
 		"https://www.iisbafile.edu.it/wp-content/uploads/provvisorio-scientifico-18sett-classi.pdf"
 	).promise;
 	/** @type {Record<string, string[][]>} */
@@ -103,7 +103,7 @@ const parseClassesData = async () => {
 				if (el.hasEOL) array.push([]);
 			}
 			return array;
-		}, /** @type {import("pdfjs-dist/types/src/display/api").TextItem[][]} */ ([[]]));
+		}, /** @type {import("pdfjs-dist/types/src/display/api.js").TextItem[][]} */ ([[]]));
 
 		pageLines.splice(0, 1);
 		pageLines.splice(1, 36);

@@ -4,7 +4,6 @@
 		"checkJs": true,
 		"strict": true,
 		"module": "NodeNext",
-		"target": "ESNext",
-		"moduleResolution": "nodenext"
+		"target": "ESNext"
 	}
 }

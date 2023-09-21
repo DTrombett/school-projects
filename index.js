@@ -1,6 +1,7 @@
-const express = require("express");
-const { readdirSync } = require("node:fs");
-const { join } = require("node:path");
+import express from "express";
+import { readdirSync } from "node:fs";
+import { resolve } from "node:path";
+
 const app = express();
 const dirs = readdirSync(".", {
 	withFileTypes: true,
@@ -19,6 +20,6 @@ app.get("/", (_req, res) => {
 	);
 });
 app.use((req, res) => {
-	res.sendFile(join(__dirname, decodeURIComponent(req.path)));
+	res.sendFile(resolve("./", decodeURIComponent(req.path).slice(1)));
 });
 app.listen(3000, () => console.log("Ready at http://localhost:3000"));

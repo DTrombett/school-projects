@@ -1,7 +1,8 @@
 /** @type {Record<string, ((string | null)[] | null)[]>} */
-// @ts-expect-error
 const orarioClassi = await fetch("./orarioClassi.json").then((b) => b.json());
-const table = document.getElementById("table");
+const table = /** @type {HTMLTableElement} */ (
+	document.getElementById("table")
+);
 /** @type {Record<string, number[] | undefined>} */
 const colors = {
 	Arte: [244, 107, 24],
@@ -19,7 +20,7 @@ const colors = {
 	Scienze: [124, 240, 86],
 	Storia: [241, 232, 126],
 };
-/** @type {Record<string,string>} */
+/** @type {Record<string, string>} */
 const classes = {
 	MATFIS: "Matematica\nFisica",
 	INGLESE: "Inglese",
@@ -45,7 +46,10 @@ const classes = {
 	FILOSOFIA: "Filosofia",
 	STORIA: "Storia",
 };
-/** @param {string} hash */
+/**
+ * Scorri fino all'hash specificata
+ * @param {string} hash
+ */
 const scrollTo = (hash) => {
 	document.querySelector(hash)?.scrollIntoView({
 		behavior: "smooth",
@@ -53,68 +57,75 @@ const scrollTo = (hash) => {
 	history.pushState(null, "", hash);
 };
 
-if (table instanceof HTMLTableElement)
-	document.getElementById("classList")?.addEventListener("click", (event) => {
-		if (event.target instanceof HTMLAnchorElement) {
-			scrollTo(/** @type {string} */ (event.target.getAttribute("href")));
-			event.preventDefault();
-			return;
-		}
-		if (event.target instanceof HTMLLIElement) {
-			const { textContent } = event.target;
+document.getElementById("classList")?.addEventListener("click", (event) => {
+	// Se l'utente ha cliccato una lettera, spostiamo tale lettera in alto
+	if (event.target instanceof HTMLAnchorElement) {
+		scrollTo(/** @type {string} */ (event.target.getAttribute("href")));
+		event.preventDefault();
+		return;
+	}
+	// Se l'utente ha cliccato su una classe, mostriamo il suo orario
+	if (event.target instanceof HTMLLIElement) {
+		const { textContent } = event.target;
 
-			if (!textContent) return;
-			const classType = textContent.slice(1);
-			const array =
-				orarioClassi[
-					`${textContent[0]}${
-						classType.startsWith("I")
-							? classType
-							: `${classType.endsWith("S.A.") ? "S" : ""}${classType[0]}`
-					}`
-				];
+		if (!textContent) return;
+		/** Il nome della classe senza il numero */
+		const classType = textContent.slice(1);
+		/** L'orario della classe selezionata */
+		const array =
+			orarioClassi[
+				`${textContent[0]}${
+					classType.startsWith("I")
+						? classType
+						: `${classType.endsWith("S.A.") ? "S" : ""}${classType[0]}`
+				}`
+			];
 
-			if (!array)
-				return alert("L'orario di questa classe non è ancora disponibile!");
-			if (!table.caption) table.caption = table.createCaption();
-			table.caption.textContent = `Orario ${textContent}`;
-			for (let i = 1; i < table.rows.length; i++) {
-				const hour = array[i - 1];
+		if (!array) return alert("L'orario di questa classe non è disponibile!");
+		table.caption ??= table.createCaption();
+		table.caption.textContent = `Orario ${textContent}`;
+		for (let i = 1; i < table.rows.length; i++) {
+			/** Le materie della classe in quest'ora */
+			const hour = array[i - 1];
 
-				table.rows[i].style.display = hour ? "table-row" : "none";
-				for (let j = 1; j < table.rows[i].cells.length; j++) {
-					// const subject = Object.keys(colors)[Math.floor(Math.random() * 12)];
-					let subject = hour?.[j - 1];
+			// Se non c'è alcuna materia in tale orario, nascondiamo la riga
+			table.rows[i].style.display = hour ? "table-row" : "none";
+			for (let j = 1; j < table.rows[i].cells.length; j++) {
+				/** La materia nella determinata ora e giorno */
+				let subject = hour?.[j - 1];
 
-					if (!subject) {
-						table.rows[i].cells[j].textContent = null;
-						table.rows[i].cells[j].style.backgroundColor = "";
-						continue;
-					}
-					subject = classes[subject];
-					let count = 1;
-					const subjects = subject.split("\n");
-					const color = subjects
-						.reduce((a, s, i) => {
-							const color = colors[s];
-
-							if (!color) return a;
-							count++;
-							if (!a) return color;
-							return a.map((n, i) => n + color[i]);
-						}, colors[subjects[0]])
-						?.map((n) => n / count);
-
-					table.rows[i].cells[j].textContent = subject;
-					if (color)
-						table.rows[i].cells[j].style.backgroundColor = `rgba(${color.join(
-							", "
-						)}, 0.5)`;
+				// Se non c'è alcuna materia, svuotiamo la cella
+				if (!subject) {
+					table.rows[i].cells[j].textContent = null;
+					table.rows[i].cells[j].style.backgroundColor = "";
+					continue;
 				}
+				// Trasformiamo il nome della materia in un formato migliore per l'utente
+				subject = classes[subject];
+				let count = 1;
+				// Se nella stessa ora potrebbero esserci più materie (es. professori che insegnano due materie nella stessa classe), uniamo i loro colori
+				const subjects = subject.split("\n");
+				const color = subjects
+					.reduce((a, s, i) => {
+						const color = colors[s];
+
+						if (!color) return a;
+						count++;
+						if (!a) return color;
+						return a.map((n, i) => n + color[i]);
+					}, colors[subjects[0]])
+					?.map((n) => n / count);
+
+				table.rows[i].cells[j].textContent = subject;
+				if (color)
+					table.rows[i].cells[j].style.backgroundColor = `rgba(${color.join(
+						", "
+					)}, 0.75)`;
 			}
-			scrollTo(`#${textContent[1]}`);
-			table.style.display = "table";
 		}
-	});
+		scrollTo(`#${textContent[1]}`);
+		table.style.display = "table";
+	}
+});
 
 export {};
