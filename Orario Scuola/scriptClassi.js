@@ -1,3 +1,5 @@
+/** @type {Record<string, ((string | null)[] | null)[]>} */
+// @ts-expect-error
 const orarioClassi = await fetch("./orarioClassi.json").then((b) => b.json());
 const table = document.getElementById("table");
 /** @type {Record<string, number[] | undefined>} */
@@ -16,6 +18,32 @@ const colors = {
 	Religione: [104, 29, 97],
 	Scienze: [124, 240, 86],
 	Storia: [241, 232, 126],
+};
+/** @type {Record<string,string>} */
+const classes = {
+	MATFIS: "Matematica\nFisica",
+	INGLESE: "Inglese",
+	GEOSTORIA: "Geostoria",
+	DISEGNO: "Arte",
+	MOTORIE: "Educazione Fisica",
+	SCIENZE: "Scienze",
+	ITALAT: "Italiano\nLatino",
+	MAT: "Matematica",
+	RELIGIONE: "Religione",
+	LAT: "Latino",
+	ITA: "Italiano",
+	REL: "Religione",
+	LATINO: "Latino",
+	ITALIANO: "Italiano",
+	LATGEO: "Latino\nGeostoria",
+	FISICA: "Fisica",
+	MATEMATICA: "Matematica",
+	INFORMATICA: "Informatica",
+	ITAGEO: "Italiano\nGeostoria",
+	STOFIL: "Storia\nFilosofia",
+	"ITA.": "Italiano",
+	FILOSOFIA: "Filosofia",
+	STORIA: "Storia",
 };
 /** @param {string} hash */
 const scrollTo = (hash) => {
@@ -36,8 +64,15 @@ if (table instanceof HTMLTableElement)
 			const { textContent } = event.target;
 
 			if (!textContent) return;
-			/** @type {string[][]} */
-			const array = orarioClassi[textContent];
+			const classType = textContent.slice(1);
+			const array =
+				orarioClassi[
+					`${textContent[0]}${
+						classType.startsWith("I")
+							? classType
+							: `${classType.endsWith("S.A.") ? "S" : ""}${classType[0]}`
+					}`
+				];
 
 			if (!array)
 				return alert("L'orario di questa classe non è ancora disponibile!");
@@ -49,13 +84,14 @@ if (table instanceof HTMLTableElement)
 				table.rows[i].style.display = hour ? "table-row" : "none";
 				for (let j = 1; j < table.rows[i].cells.length; j++) {
 					// const subject = Object.keys(colors)[Math.floor(Math.random() * 12)];
-					const subject = hour?.[j - 1];
+					let subject = hour?.[j - 1];
 
 					if (!subject) {
 						table.rows[i].cells[j].textContent = null;
 						table.rows[i].cells[j].style.backgroundColor = "";
 						continue;
 					}
+					subject = classes[subject];
 					let count = 1;
 					const subjects = subject.split("\n");
 					const color = subjects

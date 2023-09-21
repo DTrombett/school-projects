@@ -50,8 +50,8 @@ if (classList) {
 						}
 						const sa = className[1] === "S";
 
-						className = `${className[0]}${sa ? className[2] : className[1]} ${
-							sa ? "S.A." : "N.O."
+						className = `${className[0]}${sa ? className[2] : className[1]}${
+							sa ? " S.A." : className[1] === "I" ? "" : " N.O."
 						}`;
 						table.rows[i].cells[j].style.backgroundColor = `rgba(${
 							className === "Ricevimenti"
