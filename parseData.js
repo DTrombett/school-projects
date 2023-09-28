@@ -1,10 +1,13 @@
 import { writeFile } from "node:fs/promises";
-import { getDocument } from "pdfjs-dist";
+import pdfjs from "pdfjs-dist";
+
+const links = [
+	"https://iisbafile.edu.it/wp-content/uploads/Orario-scientifico-docenti-dal-2-ottobre.pdf",
+	"https://iisbafile.edu.it/wp-content/uploads/Orario-scientifico-classi-dal-2-ottobre.pdf",
+];
 
 const parseTeacherData = async () => {
-	const doc = await getDocument(
-		"https://www.iisbafile.edu.it/wp-content/uploads/provvisorio-scientifico-18sett-docenti-1.pdf"
-	).promise;
+	const doc = await pdfjs.getDocument(links[0]).promise;
 	const teachers = [];
 
 	for (let i = 1; i <= doc.numPages; i++) {
@@ -87,9 +90,7 @@ const parseTeacherData = async () => {
 	doc.cleanup();
 };
 const parseClassesData = async () => {
-	const doc = await getDocument(
-		"https://www.iisbafile.edu.it/wp-content/uploads/provvisorio-scientifico-18sett-classi.pdf"
-	).promise;
+	const doc = await pdfjs.getDocument(links[1]).promise;
 	/** @type {Record<string, string[][]>} */
 	const data = {};
 
