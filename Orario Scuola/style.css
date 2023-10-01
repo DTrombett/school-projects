@@ -20,9 +20,9 @@
 	box-sizing: border-box;
 }
 body {
-	--background-color: #202020;
-	--embed-color: #272727;
-	--text-color: #ffffff;
+	--background-color: #e0e0e0;
+	--embed-color: #d9d9d9;
+	--text-color: #000000;
 	--brand-color: #0052a3;
 	background-color: var(--background-color);
 	color: var(--text-color);
@@ -42,6 +42,7 @@ footer {
 	align-items: center;
 	background-color: var(--brand-color);
 	bottom: -1px;
+	color: #e0e0e0;
 	display: flex;
 	height: 3rem;
 	justify-content: center;
@@ -81,6 +82,7 @@ caption {
 .header {
 	align-items: center;
 	background-color: var(--brand-color);
+	color: #e0e0e0;
 	display: flex;
 	font-size: 2rem;
 	padding: 1rem 13%;
@@ -92,6 +94,7 @@ caption {
 .pages {
 	background-color: var(--brand-color);
 	border-radius: 0 0 1rem 1rem;
+	color: #e0e0e0;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
@@ -124,6 +127,7 @@ caption {
 .pages .hiddenList {
 	background-color: var(--embed-color);
 	border-radius: 5px;
+	color: var(--text-color);
 	display: none;
 	list-style: none;
 	margin-top: 206px;
@@ -292,6 +296,9 @@ li:hover > .hiddenList {
 
 @media screen and (max-width: 768px) {
 	/* Stile per tablet e desktop */
+	.active {
+		border-bottom: none;
+	}
 	.header {
 		font-size: 1.5rem;
 	}
