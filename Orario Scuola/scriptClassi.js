@@ -5,7 +5,7 @@ const table = /** @type {HTMLTableElement} */ (
 );
 /** @type {Record<string, number[] | undefined>} */
 const colors = {
-	Arte: [244, 107, 24],
+	Arte: [128, 192, 255],
 	"Educazione Fisica": [165, 136, 71],
 	Filosofia: [130, 218, 242],
 	Fisica: [252, 173, 190],
