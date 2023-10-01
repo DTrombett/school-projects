@@ -294,6 +294,13 @@ li:hover > .hiddenList {
 	}
 }
 
+@media (prefers-color-scheme: dark) {
+	body {
+		--background-color: #202020;
+		--embed-color: #272727;
+		--text-color: #ffffff;
+	}
+}
 @media screen and (max-width: 768px) {
 	/* Stile per tablet e desktop */
 	.active {
