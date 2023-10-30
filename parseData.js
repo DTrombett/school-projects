@@ -8,10 +8,10 @@ const links = [
 	"https://iisbafile.edu.it/wp-content/uploads/Orario-definitivo-LA-classi.pdf",
 ];
 const files = [
-	"./Orario Scuola/orarioProf.json",
-	"./Orario Scuola/orarioProfArtistico.json",
-	"./Orario Scuola/orarioClassi.json",
-	"./Orario Scuola/orarioArtistico.json",
+	"orarioDocentiScientifico.json",
+	"orarioDocentiArtistico.json",
+	"orarioScientifico.json",
+	"orarioArtistico.json",
 ];
 
 const parseTeacherData = async () => {
@@ -91,7 +91,7 @@ const parseTeacherData = async () => {
 			page.cleanup(true);
 		}
 		await writeFile(
-			files[i],
+			`./Orario Scuola/_data/${files[i]}`,
 			JSON.stringify(
 				Object.fromEntries(
 					teachers.sort(([name1], [name2]) => name1.localeCompare(name2))
@@ -145,7 +145,7 @@ const parseClassesData = async () => {
 			}
 			page.cleanup(true);
 		}
-		await writeFile(files[i], JSON.stringify(data));
+		await writeFile(`./Orario Scuola/_data/${files[i]}`, JSON.stringify(data));
 		doc.cleanup();
 	}
 };
