@@ -25,7 +25,7 @@ const colors = {
 	"Laboratorio Architettura": [224, 255, 255],
 	"Progettazione Architettura": [32, 178, 170],
 	"Disegno Geometrico": [128, 128, 128],
-	Chimica: [],
+	Chimica: [200, 32, 200],
 };
 /** @type {Record<string, string>} */
 const classes = {
