@@ -4,7 +4,9 @@ const CLASS_NAME_STEP = 256 / ("I".charCodeAt(0) - FIRST_CHAR_CODE + 2);
 const CLASS_COURSE_STEP = 256 / 3;
 
 /** @type {Record<string, (string[] | undefined)[] | undefined>} */
-const orarioDocenti = await fetch("./orarioProf.json").then((b) => b.json());
+const orarioDocenti = await fetch("_data/orarioDocentiScientifico.json").then(
+	(b) => b.json()
+);
 /** I nomi dei docenti */
 const names = Object.keys(orarioDocenti);
 const table = /** @type {HTMLTableElement} */ (

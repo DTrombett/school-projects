@@ -8,8 +8,9 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"test": "node .",
-		"start": "node ."
+		"build": "node parseData",
+		"start": "node .",
+		"test": "node ."
 	},
 	"repository": {
 		"type": "git",
