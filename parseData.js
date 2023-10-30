@@ -4,6 +4,11 @@ import pdfjs from "pdfjs-dist";
 const links = [
 	"https://iisbafile.edu.it/wp-content/uploads/Orario-scientifico-docenti-dal-2-ottobre.pdf",
 	"https://iisbafile.edu.it/wp-content/uploads/Orario-scientifico-classi-dal-2-ottobre.pdf",
+	"https://www.iisbafile.edu.it/wp-content/uploads/Orario-definitivo-LA-classi.pdf",
+];
+const files = [
+	"./Orario Scuola/orarioClassi.json",
+	"./Orario Scuola/orarioArtistico.json",
 ];
 
 const parseTeacherData = async () => {
@@ -90,49 +95,52 @@ const parseTeacherData = async () => {
 	doc.cleanup();
 };
 const parseClassesData = async () => {
-	const doc = await pdfjs.getDocument(links[1]).promise;
-	/** @type {Record<string, string[][]>} */
-	const data = {};
+	for (let i = 1; i < 3; i++) {
+		const doc = await pdfjs.getDocument(links[i]).promise;
+		/** @type {Record<string, string[][]>} */
+		const data = {};
 
-	for (let i = 1; i <= doc.numPages; i++) {
-		const page = await doc.getPage(i);
-		const content = await page.getTextContent();
-		const strings = content.items;
-		const pageLines = strings.reduce((array, el) => {
-			if ("str" in el) {
-				if (el.str.trim()) array.at(-1)?.push(el);
-				if (el.hasEOL) array.push([]);
+		for (let i = 1; i <= doc.numPages; i++) {
+			const page = await doc.getPage(i);
+			const content = await page.getTextContent();
+			const strings = content.items;
+			const pageLines = strings.reduce((array, el) => {
+				if ("str" in el) {
+					if (el.str.trim()) array.at(-1)?.push(el);
+					if (el.hasEOL) array.push([]);
+				}
+				return array;
+			}, /** @type {import("pdfjs-dist/types/src/display/api.js").TextItem[][]} */ ([[]]));
+
+			pageLines.splice(0, 1);
+			pageLines.splice(1, 36);
+			pageLines.splice(-1);
+			const [classes, ...rawSubjects] = pageLines;
+			const subjects = rawSubjects.flat();
+			/** @type {number} */
+			const columnWidth = classes[1].transform[4] - classes[0].transform[4];
+
+			for (let i = 0; i < classes.length; i++) {
+				const classSubjects = subjects.filter(
+					(v) =>
+						Math.floor((v.transform[4] + columnWidth / 2) / columnWidth) ===
+						i + 1
+				);
+
+				data[classes[i].str] = [];
+				for (const subject of classSubjects) {
+					const offset = Math.round((subject.transform[5] - 340) / 12);
+
+					(data[classes[i].str][5 - (offset % 6)] ??= [])[
+						5 - Math.floor(offset / 6)
+					] = subject.str;
+				}
 			}
-			return array;
-		}, /** @type {import("pdfjs-dist/types/src/display/api.js").TextItem[][]} */ ([[]]));
-
-		pageLines.splice(0, 1);
-		pageLines.splice(1, 36);
-		pageLines.splice(-1);
-		const [classes, ...rawSubjects] = pageLines;
-		const subjects = rawSubjects.flat();
-		/** @type {number} */
-		const columnWidth = classes[1].transform[4] - classes[0].transform[4];
-
-		for (let i = 0; i < classes.length; i++) {
-			const classSubjects = subjects.filter(
-				(v) =>
-					Math.floor((v.transform[4] + columnWidth / 2) / columnWidth) === i + 1
-			);
-
-			data[classes[i].str] = [];
-			for (const subject of classSubjects) {
-				const offset = Math.round((subject.transform[5] - 340) / 12);
-
-				(data[classes[i].str][5 - (offset % 6)] ??= [])[
-					5 - Math.floor(offset / 6)
-				] = subject.str;
-			}
+			page.cleanup(true);
 		}
-		page.cleanup(true);
+		await writeFile(files[i - 1], JSON.stringify(data));
+		doc.cleanup();
 	}
-	await writeFile("./Orario Scuola/orarioClassi.json", JSON.stringify(data));
-	doc.cleanup();
 };
 
 const start = performance.now();
