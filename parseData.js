@@ -1,6 +1,8 @@
+import { existsSync, mkdirSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import pdfjs from "pdfjs-dist";
 
+const start = performance.now();
 const links = [
 	"https://iisbafile.edu.it/wp-content/uploads/Orario-scientifico-docenti-dal-2-ottobre.pdf",
 	"https://iisbafile.edu.it/wp-content/uploads/Orario-definitivo-LA-docenti.pdf",
@@ -150,8 +152,9 @@ const parseClassesData = async () => {
 	}
 };
 
-const start = performance.now();
-
+if (!existsSync("./Orario Scuola/_data")) {
+	mkdirSync("./Orario Scuola/_data");
+}
 Promise.all([parseTeacherData(), parseClassesData()]).then(() => {
 	console.log(
 		`Data successfully loaded in ${(performance.now() - start).toFixed(3)}ms`
