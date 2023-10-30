@@ -101,7 +101,7 @@ document.getElementById("classList")?.addEventListener("click", (event) => {
 					continue;
 				}
 				// Trasformiamo il nome della materia in un formato migliore per l'utente
-				subject = classes[subject];
+				subject = classes[subject] ?? subject;
 				let count = 1;
 				// Se nella stessa ora potrebbero esserci più materie (es. professori che insegnano due materie nella stessa classe), uniamo i loro colori
 				const subjects = subject.split("\n");

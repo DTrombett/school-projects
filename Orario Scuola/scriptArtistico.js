@@ -11,42 +11,45 @@ const colors = {
 	"Educazione Fisica": [165, 136, 71],
 	Filosofia: [130, 218, 242],
 	Fisica: [252, 173, 190],
-	Geografia: [120, 116, 63],
 	Geostoria: [426, 457, 34],
-	Informatica: [205, 185, 250],
 	Inglese: [70, 79, 245],
 	Italiano: [37, 216, 180],
-	Latino: [244, 0, 161],
 	Matematica: [210, 54, 57],
 	Religione: [104, 29, 97],
 	Scienze: [124, 240, 86],
 	Storia: [241, 232, 126],
+	Plastico: [255, 140, 0],
+	"Discipline Plastiche": [255, 20, 147],
+	"Discipline Pittoriche": [250, 128, 114],
+	"Laboratorio Artistico": [75, 0, 130],
+	"Laboratorio Architettura": [224, 255, 255],
+	"Progettazione Architettura": [32, 178, 170],
+	"Disegno Geometrico": [128, 128, 128],
+	Chimica: [],
 };
 /** @type {Record<string, string>} */
 const classes = {
-	MATFIS: "Matematica\nFisica",
-	INGLESE: "Inglese",
-	GEOSTORIA: "Geostoria",
-	DISEGNO: "Arte",
-	MOTORIE: "Educazione Fisica",
-	SCIENZE: "Scienze",
-	ITALAT: "Italiano\nLatino",
-	MAT: "Matematica",
-	RELIGIONE: "Religione",
-	LAT: "Latino",
-	ITA: "Italiano",
-	REL: "Religione",
-	LATINO: "Latino",
+	PLAST: "Plastico",
+	"DISC.GEOM": "Disegno Geometrico",
+	DPLAST: "Discipline Plastiche",
+	"DISC.PITT": "Discipline Pittoriche",
+	"ITA,STO": "Italiano\nStoria",
 	ITALIANO: "Italiano",
-	LATGEO: "Latino\nGeostoria",
-	FISICA: "Fisica",
+	INGLESE: "Inglese",
 	MATEMATICA: "Matematica",
-	INFORMATICA: "Informatica",
-	ITAGEO: "Italiano\nGeostoria",
-	STOFIL: "Storia\nFilosofia",
-	"ITA.": "Italiano",
+	"MAT.FIS": "Matematica\nFisica",
+	MOTORIE: "Educazione Fisica",
+	MOTORIEC: "Educazione Fisica",
+	"LAB.ART": "Laboratorio Artistico",
+	"LAB.ARK": "Laboratorio Architettura",
+	RELIGIONE: "Religione",
 	FILOSOFIA: "Filosofia",
+	CHIMICA: "Chimica",
+	GEOSTORIA: "Geostoria",
+	"PROG.ARK": "Progettazione Architettura",
 	STORIA: "Storia",
+	"STO.ART": "Arte",
+	SCIENZE: "Scienze",
 };
 /**
  * Scorri fino all'hashish specificata
@@ -71,10 +74,8 @@ document.getElementById("classList")?.addEventListener("click", (event) => {
 		const { textContent } = event.target;
 
 		if (!textContent) return;
-		/** Il nome della classe senza il numero */
-		const classType = textContent.slice(1);
 		/** L'orario della classe selezionata */
-		const array = orarioClassi[classType];
+		const array = orarioClassi[textContent];
 
 		if (!array) return alert("L'orario di questa classe non è disponibile!");
 		table.caption ??= table.createCaption();
@@ -96,7 +97,7 @@ document.getElementById("classList")?.addEventListener("click", (event) => {
 					continue;
 				}
 				// Trasformiamo il nome della materia in un formato migliore per l'utente
-				subject = classes[subject];
+				subject = classes[subject] ?? subject;
 				let count = 1;
 				// Se nella stessa ora potrebbero esserci più materie (es. professori che insegnano due materie nella stessa classe), uniamo i loro colori
 				const subjects = subject.split("\n");
