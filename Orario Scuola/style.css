@@ -119,6 +119,7 @@ caption {
 	padding-left: 0;
 	position: sticky;
 	top: -1px;
+ user-select: none;
 	width: 100%;
 	z-index: 1;
 }
