@@ -372,8 +372,6 @@ li:hover > .hiddenList {
 }
 
 @media screen and (max-width: 1024px) {
-
-	/* Stile per tablet e desktop */
 	.active {
 		border-bottom: none;
 	}
@@ -421,10 +419,6 @@ li:hover > .hiddenList {
 		font-size: 1.5rem;
 	}
 
-	.rotate-banner {
-		display: flex;
-	}
-
 	.title {
 		font-size: 1.75rem;
 		margin-bottom: 0;
@@ -450,26 +444,27 @@ li:hover > .hiddenList {
 	table td,
 	table th {
 		font-size: 1.5vw;
-		height: 16vh;
+		height: min(3rem, 16vh);
 		padding: 1vw;
 	}
 
+	@media (orientation: portrait) {
+		.rotate-banner {
+			display: flex;
+		}
+	}
 }
 
 @media screen and (max-width: 320px) {
+	.container span {
+		font-size: 1.25rem;
+	}
+
 	.header {
 		font-size: 1rem;
 	}
 
 	.title {
 		font-size: 1.5rem;
-	}
-
-	.container span {
-		font-size: 1.25rem;
-	}
-
-	.rotate-banner {
-		display: flex;
 	}
 }
