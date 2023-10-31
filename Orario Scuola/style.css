@@ -427,32 +427,39 @@ li:hover > .hiddenList {
 
 	#classList {
 		font-size: 12px;
-		height: 60vh;
+		height: 55vh;
 		min-width: 12vw;
 	}
 
 	#table {
 		padding-right: 5%;
+		border-spacing: 2px;
 	}
 
 	body {
 		padding-bottom: 0;
 	}
 
-	footer {
-		display: none;
-	}
-
 	table td,
 	table th {
 		font-size: 1.5vw;
-		height: min(3.2rem, 16vh);
+		height: min(3.2rem, 15vh);
 		padding: 1vw;
 	}
 
 	@media (orientation: portrait) {
 		.rotate-banner {
 			display: flex;
+		}
+	}
+
+	@media screen and (max-height: 700px) {
+		footer {
+			display: none;
+		}
+
+		#classList {
+			height: 60vh;
 		}
 	}
 }
