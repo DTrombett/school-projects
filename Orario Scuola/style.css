@@ -301,6 +301,17 @@ li:hover > .hiddenList {
 	text-decoration: underline;
 }
 
+#fullScreen {
+	align-items: center;
+	cursor: pointer;
+	display: flex;
+	height: 2rem;
+	justify-content: center;
+	margin-top: -0.13rem;
+	position: absolute;
+	right: calc(5% + 2rem);
+}
+
 #openMenu {
 	align-items: center;
 	cursor: pointer;

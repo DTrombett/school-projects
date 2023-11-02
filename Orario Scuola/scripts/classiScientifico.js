@@ -1,4 +1,4 @@
-import { displayButton } from "./openMenu.js";
+import { displayButton } from "./buttons.js";
 
 /** @type {Record<string, ((string | null)[] | null)[]>} */
 const orarioClassi = await fetch("_data/orarioScientifico.json").then((b) =>

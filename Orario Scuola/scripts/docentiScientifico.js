@@ -1,4 +1,4 @@
-import { displayButton } from "./openMenu.js";
+import { displayButton } from "./buttons.js";
 
 const CLASS_NUMBER_STEP = 256 / 6;
 const FIRST_CHAR_CODE = "A".charCodeAt(0);
