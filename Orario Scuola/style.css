@@ -462,6 +462,10 @@ li:hover > .hiddenList {
 			width: calc(max(3rem, 8vh) * 100 / 80)
 		}
 
+		.pages {
+			position: static;
+		}
+
 		#classList {
 			height: 60vh;
 		}
