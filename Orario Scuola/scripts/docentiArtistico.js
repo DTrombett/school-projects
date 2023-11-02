@@ -1,3 +1,5 @@
+import { displayButton } from "./openMenu.js";
+
 const CLASS_NUMBER_STEP = 256 / 6;
 const FIRST_CHAR_CODE = "A".charCodeAt(0);
 const CLASS_NAME_STEP = 256 / ("I".charCodeAt(0) - FIRST_CHAR_CODE + 2);
@@ -78,6 +80,7 @@ classList.addEventListener("click", (event) => {
 		}
 		scrollTo(`#${textContent[0]}`);
 		table.style.display = "table";
+		displayButton();
 	}
 });
 // Creiamo la lista dei professori

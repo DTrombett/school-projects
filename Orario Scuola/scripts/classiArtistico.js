@@ -1,3 +1,5 @@
+import { displayButton } from "./openMenu.js";
+
 /** @type {Record<string, ((string | null)[] | null)[]>} */
 const orarioClassi = await fetch("_data/orarioArtistico.json").then((b) =>
 	b.json()
@@ -121,6 +123,7 @@ document.getElementById("classList")?.addEventListener("click", (event) => {
 		}
 		scrollTo(`#${textContent[1]}`);
 		table.style.display = "table";
+		displayButton();
 	}
 });
 

@@ -154,6 +154,7 @@ caption {
 	padding-top: 12px;
 	position: absolute;
 	text-align: left;
+	z-index: 3;
 }
 
 .pages .hiddenList::before {
@@ -248,17 +249,17 @@ li:hover > .hiddenList {
 	margin: 3rem 0;
 }
 
-.chooser {
-	display: flex;
-	flex-direction: column;
-	margin-left: 6%;
-	min-width: fit-content;
-}
-
 .classHeader {
 	margin: 0 1rem 0 0;
 	text-align: center;
 	width: fit-content;
+}
+
+#chooser {
+	display: flex;
+	flex-direction: column;
+	margin-left: 6%;
+	min-width: fit-content;
 }
 
 #classList {
@@ -298,6 +299,16 @@ li:hover > .hiddenList {
 
 #classList > ul > li:hover {
 	text-decoration: underline;
+}
+
+#openMenu {
+	align-items: center;
+	cursor: pointer;
+	display: none;
+	height: 2rem;
+	justify-content: center;
+	margin-top: -0.13rem;
+	position: absolute;
 }
 
 #table {
@@ -375,10 +386,6 @@ li:hover > .hiddenList {
 		border-bottom: none;
 	}
 
-	.chooser {
-		margin-left: 5%;
-	}
-
 	.classHeader {
 		display: none;
 	}
@@ -422,6 +429,10 @@ li:hover > .hiddenList {
 	.title {
 		font-size: 1.75rem;
 		margin-bottom: 0;
+	}
+
+	#chooser {
+		margin-left: 5%;
 	}
 
 	#classList {
