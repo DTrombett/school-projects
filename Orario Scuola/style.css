@@ -425,7 +425,7 @@ li:hover > .hiddenList {
 	}
 
 	#classList {
-		font-size: 1.5vw;
+		font-size: max(1.5vw, 12px);
 		height: 55vh;
 		min-width: 12vw;
 	}
@@ -441,7 +441,7 @@ li:hover > .hiddenList {
 
 	table td,
 	table th {
-		font-size: 1.5vw;
+		font-size: max(1.5vw, 12px);
 		height: min(3.2rem, 15vh);
 		padding: 1vw;
 	}
