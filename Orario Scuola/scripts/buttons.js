@@ -35,14 +35,16 @@ export const displayButton = () => {
 fullScreenButton?.addEventListener("click", async () => {
 	if (
 		document.fullscreenElement ||
-		("webkitRequestFullscreen" in document && document.webkitRequestFullscreen)
+		("webkitFullscreenElement" in document && document.webkitFullscreenElement)
 	) {
-		await document.exitFullscreen();
+		// @ts-ignore
+		await (document.exitFullscreen ?? document.webkitExitFullscreen)();
 		fullScreenButton.src =
 			"images/up-right-and-down-left-from-center-solid.svg";
-	} else if (document.documentElement.requestFullscreen)
-		await document.documentElement.requestFullscreen();
-	else if ("webkitRequestFullscreen" in document.documentElement)
-		// @ts-ignore
-		await document.documentElement.webkitRequestFullscreen();
+	} else
+		await (
+			document.documentElement.requestFullscreen ??
+			// @ts-ignore
+			document.documentElement.webkitRequestFullscreen
+		)();
 });
