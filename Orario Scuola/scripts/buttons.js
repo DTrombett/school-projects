@@ -32,19 +32,14 @@ export const displayButton = () => {
 	menuButton.style.display = "flex";
 };
 
-fullScreenButton?.addEventListener("click", async () => {
-	if (
-		document.fullscreenElement ||
-		("webkitFullscreenElement" in document && document.webkitFullscreenElement)
-	) {
-		// @ts-ignore
-		await (document.exitFullscreen ?? document.webkitExitFullscreen)();
-		fullScreenButton.src =
-			"images/up-right-and-down-left-from-center-solid.svg";
-	} else
-		await (
-			document.documentElement.requestFullscreen ??
-			// @ts-ignore
-			document.documentElement.webkitRequestFullscreen
-		)();
-});
+if (fullScreenButton) {
+	if (!document.documentElement.requestFullscreen)
+		fullScreenButton.style.display = "none";
+	fullScreenButton.addEventListener("click", async () => {
+		if (document.fullscreenElement) {
+			await document.exitFullscreen();
+			fullScreenButton.src =
+				"images/up-right-and-down-left-from-center-solid.svg";
+		} else await document.documentElement.requestFullscreen();
+	});
+}
