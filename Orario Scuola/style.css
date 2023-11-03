@@ -260,6 +260,8 @@ li:hover > .hiddenList {
 	flex-direction: column;
 	margin-left: 6%;
 	min-width: fit-content;
+	animation-duration: 1s;
+	animation-name: showMenu;
 }
 
 #classList {
@@ -381,6 +383,17 @@ li:hover > .hiddenList {
 
 	to {
 		background-position-x: 0%;
+	}
+}
+
+@keyframes showMenu {
+	from {
+		margin: 0;
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
 	}
 }
 
