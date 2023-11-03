@@ -173,7 +173,8 @@ caption {
 	background-color: rgba(0, 0, 0, 0.1);
 }
 
-li:hover > .hiddenList {
+li:hover > .hiddenList,
+li:active > .hiddenList {
 	display: block;
 }
 
