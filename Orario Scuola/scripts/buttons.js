@@ -43,7 +43,6 @@ fullScreenButton?.addEventListener("click", async () => {
 	} else if (document.documentElement.requestFullscreen)
 		await document.documentElement.requestFullscreen();
 	else if ("webkitRequestFullscreen" in document.documentElement)
-		await /** @type {() => Promise<void>} */ (
-			document.documentElement.webkitRequestFullscreen
-		)();
+		// @ts-ignore
+		await document.documentElement.webkitRequestFullscreen();
 });
