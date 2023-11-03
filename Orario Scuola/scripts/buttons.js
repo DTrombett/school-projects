@@ -1,18 +1,19 @@
-const chooser = /** @type {HTMLDivElement | null} */ (
-	document.getElementById("chooser")
-);
 const fullScreenButton = /** @type {HTMLImageElement | null} */ (
 	document.getElementById("fullScreen")
 );
-const menuButton = document.getElementById("openMenu");
-const table = /** @type {HTMLTableElement | null} */ (
-	document.getElementById("table")
-);
-let isFullScreen = false;
 let buttonReady = false;
 
 export const displayButton = () => {
-	if (buttonReady || !(chooser && menuButton && table)) return;
+	if (buttonReady) return;
+	const chooser = /** @type {HTMLDivElement | null} */ (
+		document.getElementById("chooser")
+	);
+	const menuButton = document.getElementById("openMenu");
+	const table = /** @type {HTMLTableElement | null} */ (
+		document.getElementById("table")
+	);
+
+	if (!(chooser && menuButton && table)) return;
 	buttonReady ||= true;
 	const resolveX = () => {
 		menuButton.style.left = `calc(${
@@ -30,7 +31,7 @@ export const displayButton = () => {
 };
 
 fullScreenButton?.addEventListener("click", () => {
-	if (isFullScreen) {
+	if (document.fullscreenElement) {
 		document.exitFullscreen();
 		fullScreenButton.src =
 			"images/up-right-and-down-left-from-center-solid.svg";
@@ -38,5 +39,4 @@ fullScreenButton?.addEventListener("click", () => {
 		document.documentElement.requestFullscreen();
 		fullScreenButton.src = "images/down-left-and-up-right-to-center-solid.svg";
 	}
-	isFullScreen = !isFullScreen;
 });
