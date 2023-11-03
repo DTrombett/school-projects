@@ -1,3 +1,5 @@
+import "./menu.js";
+
 const fullScreenButton = /** @type {HTMLImageElement | null} */ (
 	document.getElementById("fullScreen")
 );
@@ -30,13 +32,18 @@ export const displayButton = () => {
 	menuButton.style.display = "flex";
 };
 
-fullScreenButton?.addEventListener("click", () => {
-	if (document.fullscreenElement) {
-		document.exitFullscreen();
+fullScreenButton?.addEventListener("click", async () => {
+	if (
+		document.fullscreenElement ||
+		("webkitRequestFullscreen" in document && document.webkitRequestFullscreen)
+	) {
+		await document.exitFullscreen();
 		fullScreenButton.src =
 			"images/up-right-and-down-left-from-center-solid.svg";
-	} else {
-		document.documentElement.requestFullscreen();
-		fullScreenButton.src = "images/down-left-and-up-right-to-center-solid.svg";
-	}
+	} else if (document.documentElement.requestFullscreen)
+		await document.documentElement.requestFullscreen();
+	else if ("webkitRequestFullscreen" in document.documentElement)
+		await /** @type {() => Promise<void>} */ (
+			document.documentElement.webkitRequestFullscreen
+		)();
 });
