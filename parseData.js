@@ -5,9 +5,9 @@ import pdfjs from "pdfjs-dist";
 const start = performance.now();
 const links = [
 	"https://iisbafile.edu.it/wp-content/uploads/Orario-scientifico-docenti-dal-2-ottobre.pdf",
-	"https://iisbafile.edu.it/wp-content/uploads/Orario-definitivo-LA-docenti.pdf",
+	"https://iisbafile.edu.it/wp-content/uploads/Orario-artistico-docenti-dal-2-ottobre.pdf",
 	"https://iisbafile.edu.it/wp-content/uploads/Orario-scientifico-classi-dal-2-ottobre.pdf",
-	"https://iisbafile.edu.it/wp-content/uploads/Orario-definitivo-LA-classi.pdf",
+	"https://iisbafile.edu.it/wp-content/uploads/Orario-artistico-classi-dal-2-ottobre.pdf",
 ];
 const files = [
 	"orarioDocentiScientifico.json",
