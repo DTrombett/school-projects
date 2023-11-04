@@ -174,7 +174,7 @@ caption {
 }
 
 li:hover > .hiddenList {
-	display: block;
+	display: block !important;
 }
 
 /* Home page */
