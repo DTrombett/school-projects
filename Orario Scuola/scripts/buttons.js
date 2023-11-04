@@ -33,8 +33,9 @@ export const displayButton = () => {
 };
 
 if (fullScreenButton) {
-	if (!document.documentElement.requestFullscreen)
-		fullScreenButton.style.display = "none";
+	// @ts-ignore
+	if (document.documentElement.requestFullscreen)
+		fullScreenButton.style.display = "flex";
 	fullScreenButton.addEventListener("click", async () => {
 		if (document.fullscreenElement) {
 			await document.exitFullscreen();
