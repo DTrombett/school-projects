@@ -24,6 +24,7 @@ export const displayButton = () => {
 		}px - 2rem - 1vw)`;
 	};
 
+	window.addEventListener("resize", () => resolveX());
 	if (window.innerWidth < 800) chooser.style.display = "none";
 	menuButton.addEventListener("click", () => {
 		resolveX(
