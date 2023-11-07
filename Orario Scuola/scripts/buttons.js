@@ -45,6 +45,10 @@ if (fullScreenButton) {
 			await document.exitFullscreen();
 			fullScreenButton.src =
 				"images/up-right-and-down-left-from-center-solid.svg";
-		} else await document.documentElement.requestFullscreen();
+		} else {
+			await document.documentElement.requestFullscreen();
+			fullScreenButton.src =
+				"images/down-left-and-up-right-to-center-solid.svg";
+		}
 	});
 }
