@@ -1,3 +1,4 @@
 node_modules
 .vscode
-Orario Scuola/_data
+_data
+dist
