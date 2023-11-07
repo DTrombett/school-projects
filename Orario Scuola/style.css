@@ -501,6 +501,12 @@ li:hover > .hiddenList {
 			position: relative;
 		}
 
+		.pages > li > span,
+		.pages > li > a,
+		.hiddenList > li > * {
+			padding: 2vh 3vw;
+		}
+
 		#classList {
 			height: 60vh;
 		}
