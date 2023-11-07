@@ -17,16 +17,19 @@ export const displayButton = () => {
 
 	if (!(chooser && menuButton && table)) return;
 	buttonReady ||= true;
-	const resolveX = () => {
-		menuButton.style.left = `calc(${
+	/** @param {string} [display] */
+	const resolveX = (display) => {
+		menuButton.style.left = `calc(${display === "flex" ? "5% + " : ""}${
 			table.rows[0].cells[1].getBoundingClientRect().x
 		}px - 2rem - 1vw)`;
 	};
 
 	if (window.innerWidth < 800) chooser.style.display = "none";
 	menuButton.addEventListener("click", () => {
-		chooser.style.display = chooser.style.display === "none" ? "flex" : "none";
-		resolveX();
+		resolveX(
+			(chooser.style.display =
+				chooser.style.display === "none" ? "flex" : "none")
+		);
 	});
 	resolveX();
 	menuButton.style.display = "flex";
