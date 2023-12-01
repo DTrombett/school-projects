@@ -1,9 +1,11 @@
 import { displayButton } from "./buttons.js";
 
-/** @type {Record<string, ((string | null)[] | null)[]>} */
-const orarioClassi = await fetch("_data/orarioArtistico.json").then((b) =>
-	b.json()
-);
+/** @type {[Record<string, ((string | null)[] | null)[]>, Record<string, (string[] | undefined)[] | undefined>]} */
+const [orarioClassi, orarioDocenti] = await Promise.all([
+	fetch("_data/orarioArtistico.json").then((b) => b.json()),
+	fetch("_data/orarioDocentiArtistico.json").then((b) => b.json()),
+]);
+const docenti = Object.entries(orarioDocenti);
 const table = /** @type {HTMLTableElement} */ (
 	document.getElementById("table")
 );
@@ -118,6 +120,10 @@ document.getElementById("classList")?.addEventListener("click", (event) => {
 					?.map((n) => n / count);
 
 				table.rows[i].cells[j].textContent = subject;
+				table.rows[i].cells[j].title =
+					docenti.find(
+						([, orario]) => orario?.[i - 1]?.[j - 1] === textContent
+					)?.[0] ?? "";
 				if (color)
 					table.rows[i].cells[j].style.backgroundColor = `rgba(${color.join(
 						", "

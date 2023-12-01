@@ -1,9 +1,11 @@
 import { displayButton } from "./buttons.js";
 
-/** @type {Record<string, ((string | null)[] | null)[]>} */
-const orarioClassi = await fetch("_data/orarioScientifico.json").then((b) =>
-	b.json()
-);
+/** @type {[Record<string, ((string | null)[] | null)[]>, Record<string, (string[] | undefined)[] | undefined>]} */
+const [orarioClassi, orarioDocenti] = await Promise.all([
+	fetch("_data/orarioScientifico.json").then((b) => b.json()),
+	fetch("_data/orarioDocentiScientifico.json").then((b) => b.json()),
+]);
+const docenti = Object.entries(orarioDocenti);
 const table = /** @type {HTMLTableElement} */ (
 	document.getElementById("table")
 );
@@ -75,15 +77,13 @@ document.getElementById("classList")?.addEventListener("click", (event) => {
 		if (!textContent) return;
 		/** Il nome della classe senza il numero */
 		const classType = textContent.slice(1);
+		const className = `${textContent[0]}${
+			classType.startsWith("I")
+				? classType
+				: `${classType.endsWith("S.A.") ? "S" : ""}${classType[0]}`
+		}`;
 		/** L'orario della classe selezionata */
-		const array =
-			orarioClassi[
-				`${textContent[0]}${
-					classType.startsWith("I")
-						? classType
-						: `${classType.endsWith("S.A.") ? "S" : ""}${classType[0]}`
-				}`
-			];
+		const array = orarioClassi[className];
 
 		if (!array) return alert("L'orario di questa classe non è disponibile!");
 		table.caption ??= table.createCaption();
@@ -121,6 +121,10 @@ document.getElementById("classList")?.addEventListener("click", (event) => {
 					?.map((n) => n / count);
 
 				table.rows[i].cells[j].textContent = subject;
+				table.rows[i].cells[j].title =
+					docenti.find(
+						([, orario]) => orario?.[i - 1]?.[j - 1] === className
+					)?.[0] ?? "";
 				if (color)
 					table.rows[i].cells[j].style.backgroundColor = `rgba(${color.join(
 						", "
