@@ -485,16 +485,12 @@ li:hover > .hiddenList {
 		.container img {
 			--image-size: 50vw;
 		}
-
-		.rotate-banner {
-			display: flex;
-		}
 	}
 
 	@media screen and (max-height: 700px) {
 		.logo {
 			height: max(3rem, 8vh);
-			width: calc(max(3rem, 8vh) * 100 / 80)
+			width: calc(max(3rem, 8vh) * 100 / 80);
 		}
 
 		.pages {
@@ -529,5 +525,11 @@ li:hover > .hiddenList {
 
 	.title {
 		font-size: 1.5rem;
+	}
+}
+
+@media screen and (max-width: 640px) and (orientation: portrait) {
+	.rotate-banner {
+		display: flex;
 	}
 }
