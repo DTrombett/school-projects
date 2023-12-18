@@ -1,5 +1,5 @@
 {
-	"include": ["src/index.ts", "src/2023"],
+	"include": ["src"],
 	"extends": [
 		"@tsconfig/recommended/tsconfig.json",
 		"@tsconfig/strictest/tsconfig.json",
@@ -10,6 +10,8 @@
 		"alwaysStrict": true,
 		"esModuleInterop": true,
 		"exactOptionalPropertyTypes": false,
+		"module": "esnext",
+		"moduleResolution": "bundler",
 		"noImplicitAny": true,
 		"noImplicitThis": true,
 		"noPropertyAccessFromIndexSignature": false,
