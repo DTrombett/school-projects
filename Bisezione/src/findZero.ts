@@ -24,7 +24,10 @@ const findZero = (
 		newX = (x[0] + x[1]) / 2;
 		y = fn.evaluate({ x: newX });
 		if (y === 0) break;
-		x[Number(increasing ? y > 0 : y < 0)] = newX;
+		const i = Number(increasing ? y > 0 : y < 0);
+
+		if (x[i] === newX) break;
+		x[i] = newX;
 	} while (x[1] - x[0] > diff);
 	return newX;
 };
