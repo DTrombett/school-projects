@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { isSymbolNode, parse } from "mathjs";
 import { exit, stdin, stdout } from "node:process";
 import { createInterface } from "node:readline/promises";
