@@ -1,0 +1,23 @@
+{
+	"include": ["src/index.ts", "src/2023"],
+	"extends": [
+		"@tsconfig/recommended/tsconfig.json",
+		"@tsconfig/strictest/tsconfig.json",
+		"@tsconfig/node20/tsconfig.json"
+	],
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"alwaysStrict": true,
+		"esModuleInterop": true,
+		"exactOptionalPropertyTypes": false,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"noPropertyAccessFromIndexSignature": false,
+		"noUncheckedIndexedAccess": false,
+		"outDir": "./dist",
+		"pretty": true,
+		"resolveJsonModule": true,
+		"rootDir": "./src",
+		"sourceMap": true
+	}
+}
