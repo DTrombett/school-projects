@@ -31,12 +31,12 @@ if (Number.isNaN(fractionDigits) || fractionDigits < 0)
 		cause: fractionDigits,
 	});
 const now = performance.now();
-const zero = findZero(code, x, fractionDigits);
+const [zero, count] = findZero(code, x, fractionDigits);
 
 console.log(
 	`Trovato lo 0 con precisione di ${fractionDigits} cifre decimali in ${
 		performance.now() - now
-	}ms:`,
+	}ms con ${count} iterazioni:`,
 	zero.toFixed(fractionDigits)
 );
 exit();
