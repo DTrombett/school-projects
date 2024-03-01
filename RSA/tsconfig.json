@@ -1,0 +1,25 @@
+{
+	"include": ["src"],
+	"extends": [
+		"@tsconfig/recommended/tsconfig.json",
+		"@tsconfig/strictest/tsconfig.json",
+		"@tsconfig/node20/tsconfig.json"
+	],
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"alwaysStrict": true,
+		"esModuleInterop": true,
+		"exactOptionalPropertyTypes": false,
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"noPropertyAccessFromIndexSignature": false,
+		"noUncheckedIndexedAccess": false,
+		"outDir": "./dist",
+		"pretty": true,
+		"resolveJsonModule": true,
+		"rootDir": "./src",
+		"sourceMap": true
+	}
+}

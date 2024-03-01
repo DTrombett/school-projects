@@ -1,0 +1,31 @@
+{
+	"name": "rsa",
+	"version": "1.0.0",
+	"description": "",
+	"main": "./dist/index.js",
+	"scripts": {
+		"build": "tsc",
+		"start": "npm run build && node --enable-source-maps .",
+		"test": "tsc --noEmit"
+	},
+	"author": "DTrombett",
+	"exports": "./dist/index.js",
+	"type": "module",
+	"engines": {
+		"node": ">=20"
+	},
+	"devDependencies": {
+		"@types/node": "^20.10.5",
+		"@typescript-eslint/eslint-plugin": "^6.14.0",
+		"@typescript-eslint/parser": "^6.14.0",
+		"eslint": "^8.56.0",
+		"eslint-plugin-node": "^11.1.0",
+		"typescript": "^5.3.3"
+	},
+	"dependencies": {
+		"@tsconfig/node20": "^20.1.2",
+		"@tsconfig/recommended": "^1.0.3",
+		"@tsconfig/strictest": "^2.0.2",
+		"dotenv": "^16.3.1"
+	}
+}
